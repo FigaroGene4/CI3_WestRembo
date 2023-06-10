@@ -147,6 +147,13 @@ if($email != false && $password != false){
 
   background-color: #001D3D;
 }
+
+.mt-2{
+  color: #001D3D;
+  font-weight: bold;
+}
+
+
 </style>
 
 <body>
@@ -200,7 +207,7 @@ if($email != false && $password != false){
       <div class="container">
         <div class="row g-4">
           <div class="col-md">
-              <h2 class="text-left mb-4">Document Request</h2>
+              <h2 class="text-left mb-4" style="color: #001D3D; font-weight: bold;">Document Request</h2>
               <p class="text-left mb-2">Select type of document you want to request</p>
 
               <img src="../wrp-assets/doc-req.png" class="img-fluid" alt="" />

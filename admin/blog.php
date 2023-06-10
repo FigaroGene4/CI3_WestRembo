@@ -119,52 +119,61 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
                 unset($_SESSION['success']);
             }
             ?>
-            <div class="col-md-12">
-            <div class="table-responsive">
-                <div class="height10">
-                    <table id="myTable" class="table text-left table-striped table-bordered">
-                        <thead class="thead-dark">
-                            <th style="background-color: #001D3D;">ID</th>
-                            <th style="background-color: #001D3D;">TITLE</th>
-                            <th style="background-color: #001D3D;">DATE</th>
-                            <th style="background-color: #001D3D;">CONTENT</th>
-                            <th style="background-color: #001D3D;">IMG</th>
-                            <th style="background-color: #001D3D;">CATEGORY</th>
-                            <th style="background-color: #001D3D;">ACTION</th>
-                        </thead>
-                        <tbody>
-                            <?php
-                            include_once('db_conn.php');
-                            $sql = "SELECT * FROM table_blog";
-                            $query = $conn->query($sql);
-                            while ($row = $query->fetch_assoc()) {
-                                $imagePath = 'blogimage/' . $row['img'];
-                                
-                                echo "
-                                <tr>
-                                    <td>" . $row['id'] . "</td>
-                                    <td>" . $row['title'] . "</td>
-                                    <td>" . $row['date'] . "</td>
-                                    <td class='content_td'>
-                                        <p>" . $row['content'] . "</p>
-                                    </td>
-                                    <td class='img_td'>
-                                         <img src='" . $imagePath . "' style='width: 100px;'>
-                                     </td>
-                                    <td>" . $row['category'] . "</td>
-                                    <td>
-                                        <a href='#delete_" . $row['id'] . "' class='buttonz btn btn-danger btn-sm' data-toggle='modal'>
-                                            <span class='glyphicon glyphicon-trash'></span> Delete
-                                        </a>
-                                    </td>
-                                </tr>";
-                                include('deleteBlogModal.php');
-                            }
-                            ?>
-                         </table>
+            <form method="POST" action="editBlog.php?id=<?php echo $row['id']; ?>">
+
+                <div class="col-md-12">
+                <div class="table-responsive">
+                    <div class="height10">
+                        <table id="myTable" class="table text-left table-striped table-bordered">
+                            <thead class="thead-dark">
+                                <th style="background-color: #001D3D;">ID</th>
+                                <th style="background-color: #001D3D;">TITLE</th>
+                                <th style="background-color: #001D3D;">DATE</th>
+                                <th style="background-color: #001D3D;">CONTENT</th>
+                                <th style="background-color: #001D3D;">IMG</th>
+                                <th style="background-color: #001D3D;">CATEGORY</th>
+                                <th style="background-color: #001D3D;">ACTION</th>
+                            </thead>
+                            <tbody>
+                                <?php
+                                include_once('db_conn.php');
+                                $sql = "SELECT * FROM table_blog";
+                                $query = $conn->query($sql);
+                                while ($row = $query->fetch_assoc()) {
+                                    $imagePath = 'blogimage/' . $row['img'];
+                                    
+                                    echo "
+                                    <tr>
+                                        <td>" . $row['id'] . "</td>
+                                        <td>" . $row['title'] . "</td>
+                                        <td>" . $row['date'] . "</td>
+                                        <td class='content_td'>
+                                            <p>" . $row['content'] . "</p>
+                                        </td>
+                                        <td class='img_td'>
+                                            <img src='" . $imagePath . "' style='width: 100px;'>
+                                        </td>
+                                        <td>" . $row['category'] . "</td>
+                                        
+                                        <td>
+                                        <a href='editBlog.php?id=" . $row['id'] . "' class='buttonz btn btn-primary btn-sm'>
+
+                                        <span class='glyphicon glyphicon-trash'></span> Edit
+                                            </a>
+                                            <a href='#delete_" . $row['id'] . "' class='buttonz btn btn-danger btn-sm' data-toggle='modal'>
+                                                <span class='glyphicon glyphicon-trash'></span> Delete
+                                            </a>
+                                        </td>
+                                    </tr>";
+                                    include('deleteBlogModal.php');
+                                 
+                                }
+                                ?>
+                            </table>
+                        </div>
                     </div>
                 </div>
-            </div>
+         </div>
         </div>
     </div>
 </div>
