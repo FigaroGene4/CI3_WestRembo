@@ -207,7 +207,7 @@ session_start();
                 
                                   <td>
                                   <a href='#edit_" . $row['id'] . "' class='btn btn-sm buttonz rs-btn' style='background-color: #FFC300; color: #001D3D; margin-bottom: 10px;' data-toggle='modal'>
-                                      <span class='glyphicon glyphicon-edit'></span> View
+                                      <span class='glyphicon glyphicon-edit'></span> Edit
                                   </a>
                                   <a href='residentsdh.php?email=" . $row['email'] . "' class='btn btn-sm buttonz rs-btn' style='background-color: #001D3D; color: #ffff; margin-bottom: 10px;'>
                                       <span class='glyphicon glyphicon-eye-open'></span> History

@@ -39,19 +39,7 @@ session_start();
       position: relative;
       top: 7px
     }
-    .sidebar {
-    width: 250px; /* Modify the width of the sidebar as needed */
-    padding: 20px; /* Add padding to create space around the links */
-  }
-
-  .sidebar a {
-    display: block;
-    margin-bottom: 10px; /* Add margin bottom for spacing between links */
-    text-decoration: none;
-    color: #000;
-    font-size: 16px;
-    line-height: 1.5;
-  }
+    
   </style>
 
 </head>

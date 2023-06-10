@@ -110,7 +110,7 @@
   <a href="docrequest.php" class="d-flex align-items-center"><img src="../wrp-assets/google-docs.png" alt="Document Requests" class="me-2">Document Requests</a>
   <a href="payment.php" class="d-flex align-items-center"><img src="../wrp-assets/income.png" alt="Payment" class="me-2">Payment</a>
   <a href="Blog.php" class="d-flex align-items-center"><img src="../wrp-assets/megaphone.png" alt="Pricing" class="me-2">News and Announcement</a>
-  <a href="feedback.php" class="d-flex align-items-center"><img src="../wrp-assets/megaphone.png" alt="Pricing" class="me-2">Feedback</a>
+  <a href="feedback.php" class="d-flex align-items-center"><img src="../wrp-assets/feedback.png" alt="Pricing" class="me-2">Feedback</a>
   <a href="report.php" class="d-flex align-items-center"><img src="../wrp-assets/bar-chart.png" alt="Reports" class="me-2">Reports</a>
   <!--<a href="refund.php" class="d-flex align-items-center"><img src="path_to_your_icon/refund.png" alt="Refund" class="me-2">Refund</a>
   <a href="payartist.php" class="d-flex align-items-center"><img src="path_to_your_icon/payartist.png" alt="Pay Artist" class="me-2">Pay Artist</a> -->

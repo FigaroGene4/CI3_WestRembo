@@ -156,7 +156,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
                                         <td>" . $row['category'] . "</td>
                                         
                                         <td>
-                                        <a href='editBlog.php?id=" . $row['id'] . "' class='buttonz btn btn-primary btn-sm'>
+                                        <a href='editBlog.php?id=" . $row['id'] . "' class='buttonz btn btn-primary btn-sm mb-3' style='background-color: #FFC300; border-color:  #FFC300; color:#001D3D;'>
 
                                         <span class='glyphicon glyphicon-trash'></span> Edit
                                             </a>
