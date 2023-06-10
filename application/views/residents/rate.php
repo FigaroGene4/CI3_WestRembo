@@ -11,7 +11,7 @@ require_once 'vendor/autoload.php';
 $classifier = new \Niiknow\Bayes();
 
 
-require_once 'vendor/autoload.php';
+
 
 
 
