@@ -77,7 +77,7 @@ h1{
 
 <?php 
 include_once("db_conn.php");
-$sql = "SELECT * FROM table_blog ORDER BY id DESC LIMIT 3";
+$sql = "SELECT * FROM table_blog ORDER BY id DESC";
 $resultset = mysqli_query($conn, $sql) or die("database error:". mysqli_error($conn));
 while ($rows = mysqli_fetch_assoc($resultset)) {
     echo "<div class='container'>";
@@ -113,6 +113,7 @@ while ($rows = mysqli_fetch_assoc($resultset)) {
     echo "<div class='row mt-4'></div>";
 }
 ?>
+
 
 
 
