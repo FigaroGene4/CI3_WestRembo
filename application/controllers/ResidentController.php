@@ -55,7 +55,16 @@ class ResidentController extends CI_Controller {
     public function profile(){
         $this->load->view('residents/header-client');
         $this->load->view('residents/profile');
+      
+        
     }
+
+    public function editprofile(){
+      
+        $this->load->view('residents/editprofile');
+        
+    }
+
 
     public function logout(){
         $this->load->view('residents/logout-user');

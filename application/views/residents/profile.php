@@ -1,4 +1,9 @@
+<?php require_once "controllerUserData.php"; 
 
+
+ 
+
+?>
  <?php if (isset($_SESSION['emailerror'])) {
                 echo
                 "
@@ -114,223 +119,101 @@ if ($email != false && $password != false) {
 <body>
 
 
-    
-      </nav><!-- .navbar -->
-
-    </div>
-  </header><!-- End Header -->
-  <br><br><br><br><br>
+     
+  <br><br>
   <style>
-    .jbt {
-      background-image: url(img/jbl.jpg);
-      background-repeat: no-repeat;
-      background-size: cover;
+ 
 
 
-    }
-
-
-
-
-
-
-
-    .containerz {
-      max-width: 200px;
-      background: #6666ff;
-      margin: 40px auto;
-      padding: 10px 0px 20px 0px;
-      float: left;
-      margin-top: 100px;
-
-      border-radius: 10px;
-      box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.75);
-      color: white;
-    }
-
-    .link {
-      font-size: 16px;
-      font-weight: 300;
-      text-align: center;
-      position: relative;
-      height: 40px;
-      line-height: 40px;
-      margin-top: 10px;
-      overflow: hidden;
-      width: 90%;
-      margin-left: 5%;
-      cursor: pointer;
-    }
-
-    .link:after {
-      content: '';
-      position: absolute;
-      width: 80%;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.5);
-      bottom: 50%;
-      left: -100%;
-      transition-delay: all 0.5s;
-      transition: all 0.5s;
-    }
-
-    .link:hover:after,
-    .link.hover:after {
-      left: 100%;
-    }
-
-    .link .text {
-      text-shadow: 0px -40px 0px rgba(255, 255, 255, 1);
-      transition: all 0.75s;
-      transform: translateY(100%) translateZ(0);
-      transition-delay: all 0.25s;
-    }
-
-    .link:hover .text,
-    .link.hover .text {
-      text-shadow: 0px -40px 0px rgba(255, 255, 255, 0);
-      transform: translateY(0%) translateZ(0) scale(1.1);
-      font-weight: 600;
-    }
-
-    a {
-      color: white;
-    }
-
-    .tubol {
+    .user-img {
       width: 250px;
       height: 250px;
       border: px solid #ddd;
       border-radius: 10px;
       object-fit:cover;
-
-
-
-    }
-
-    .profile {
-      max-width: 500px;
-      text-align: center;
-      background: gray;
-      margin: 40px auto;
-      padding: 30px 20px 30px 20px;
-
-      margin-top: 100px;
-
-      border-radius: 10px;
-      box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.75);
-      color: white;
-
     }
 
     div.b {
       text-align: left;
     }
 
-    .wew {
-      padding-left: 100px;
-    }
+
+    .btn-primary {
+  background-color: #001D3D;
+  color: #ffffff;
+  border-radius: 10px;
+
+}
+
+.btn-primary:hover {
+ 
+  background-color: #001D3D;
+}
   </style>
-  <h1 style="text-align: center;"> My Profile</h1>
-  <div class="container profile">
 
+<?php
+$conn = mysqli_connect('localhost', 'root', '', 'db_westrembo');
 
+$sql = "SELECT * from table_residents where email = '$email'";
+$result = $conn->query($sql);
 
-    <br><br>
-    <?php
+if ($result->num_rows > 0) {
+  while ($row = $result->fetch_assoc()) {
+    $firstname = $row['firstName'];
+    $lastname = $row['lastName'];
+    $contactnumber = $row['contactNumber'];
 
+    $id = $row['id'];
+    $img = $row['image'];
 
+    $addressDetails = $row['houseNumber'];
+    $baranggay = $row['streetNumber'];
+    $postalCode = $row['sitio'];
 
+    $address = $addressDetails . ', ' . $baranggay . ', ' . $city;
+    $_SESSION['clientFirstName'] = $firstname;
+    $_SESSION['clientLastName'] = $lastname;
+    $_SESSION['clientContactNumber'] = $contactnumber;
+    $_SESSION['clientAddress'] = $address;
+    $_SESSION['clientEmail'] = $email;
+    $_SESSION['id'] = $id;
+    $_SESSION['addressDetails'] = $addressDetails;
+    $_SESSION['baranggay'] = $baranggay;
+    $_SESSION['postalCode'] = $postalCode;
 
-    $conn = mysqli_connect('localhost', 'root', '', 'db_westrembo');
+    echo '<div class="text-center">';
+    echo '<img class="user-img rounded-circle" src="images/' . $img . '" ><br><br>';
+    echo '</div>';
 
-    $sql = "SELECT * from table_residents where  email = '$email' ";
-    $result = $conn->query($sql);
-
-    if ($result->num_rows > 0) {
-
-      while ($row = $result->fetch_assoc()) {
-        $firstname = $row['firstName'];
-        $lastname = $row['lastName'];
-        $contactnumber = $row['contactNumber'];
-      
-        $id = $row['id'];
-        $img = $row['image'];
-        
-        $addressDetails = $row['houseNumber'];
-        $baranggay = $row['streetNumber'];
-        $postalCode = $row['sitio'];
-
-
-        $address = $addressDetails . ', ' . $baranggay . ', ' ;
-   
-
-
-        echo '<img class="tubol" src="images/' . $img . '" ><br><br>';
-        echo '<div class="wew" style= "text-align:left" >';
-
-
-        echo "Name: " . $firstname. " " . $lastname;
-        echo "<br>" . "Email: " . $email;
-        echo "<br>" . "Contact Number: " . $contactnumber;
-        echo "<br>" . "Address: " . $address;
-
-        echo '</div>';
-      }
-    }
-
-
-    ?>
-     
+    echo '<div class="row">';
     
-    <br><br><br>
-    <a class="btn btn-primary" href="editprofile.php" role="button">Edit Profile</a>
-   
-
+    // Column 1
+    echo '<div class="col-md" style="margin-left: 20px;">';
+    echo '<label for="firstname" class="small" style="font-size: 20px;">First Name:</label>';
+    echo '<input type="text" id="firstname" name="firstname" value="' . $firstname . '" readonly class="form-control input-lg" style="background-color: #f2f2f2; width: 70%;">';
+    echo '<br>';
+    echo '<label for="contactnumber" class="small" style="font-size: 20px;">Contact Number:</label>';
+    echo '<input type="text" id="contactnumber" name="contactnumber" value="' . $contactnumber . '" readonly class="form-control input-lg" style="background-color: #f2f2f2; width: 70%;">';
+    echo '</div>';
     
+    // Column 2
+    echo '<div class="col-md" style="margin-left: 20px;">';
+    echo '<label for="lastname" class="small" style="font-size: 20px;">Last Name:</label>';
+    echo '<input type="text" id="lastname" name="lastname" value="' . $lastname . '" readonly class="form-control input-lg" style="background-color: #f2f2f2; width: 70%;">';
+    echo '<br>';
+    echo '<label for="address" class="small" style="font-size: 20px;">Address:</label>';
+    echo '<input type="text" id="address" name="address" value="' . $address . '" readonly class="form-control input-lg" style="background-color: #f2f2f2; width: 70%;">';
+    echo '</div>';
+    
+    echo '</div>'; // End row
+  }
+}
+?>
 
 
-
-
+<div class="d-flex justify-content-end mt-3">
+    <a class="btn btn-primary btn-lg" href="<?php echo base_url('editprofile'); ?>" role="button">Edit Profile</a>
   </div>
-
-
-
-  <h1> <?php if (isset($_SESSION['emailerror'])) {
-                echo
-                "
-            <div class='alert alert-danger text-center'>
-                <button class='close'>&times;</button>
-                " . $_SESSION['emailerror'] . "
-                
-            </div>
-            ";
-                unset($_SESSION['emailerror']);
-              } ?>
-
-          <h1> <?php if (isset($_SESSION['updated'])) {
-                  echo
-                  "
-            <div class='alert alert-success text-center'>
-                <button class='close'>&times;</button>
-                " . $_SESSION['updated'] . " </div>";
-                  unset($_SESSION['updated']);
-
-                  echo '<h6><a href="profile.php" class="link-primary">Return to Profile</a></h6>';
-                }
-
-                if (isset($_SESSION['photo'])) {
-                  echo
-                  "
-            <div class='alert alert-success text-center'>
-                <button class='close'>&times;</button>
-                " . $_SESSION['photo'] . " </div>";
-                  unset($_SESSION['photo']);
-
-                  echo '<h6><a href="profile.php" class="link-primary">Return to Profile</a></h6>';
-                } ?>
-
-
-
 
 
   <script src="js1/jquery.min.js"></script>
@@ -338,21 +221,6 @@ if ($email != false && $password != false) {
   <script src="js1/bootstrap.min.js"></script>
   <script src="js1/owl.carousel.min.js"></script>
   <script src="js1/main.js"></script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-  <br><br><br><br><br><br><br>
-  <?php// include '../includes/footer.php'; ?>
 
 
 
