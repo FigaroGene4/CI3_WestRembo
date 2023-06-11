@@ -95,52 +95,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
   <h2 class="dblabel">&nbsp Dashboard</h2>
   <div class="container" style="text-align: center">
 
-  <div class="alert alert-primary alert-dismissible fade show" role="alert">
-  <?php
-          $sql = "SELECT review FROM table_documentrequest WHERE sentiment = 'positive'";
-          $query = $conn->query($sql);
-                while ($row = $query->fetch_assoc()) {
-                  $comment = $row['review'];
-
-                }
-          ?>
-  <strong>Positive Feedback:</strong> <?= $comment;?>
-  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-    <span aria-hidden="true">&times;</span>
-  </button>
-</div>
-
-
-<?php
-          $sql1 = "SELECT review FROM table_documentrequest WHERE sentiment = 'negative'";
-          $query = $conn->query($sql1);
-                while ($row = $query->fetch_assoc()) {
-                 if ($row['review'] == NULL){
-                  
-                  echo '<div class="alert alert-warning alert-dismissible fade show" role="alert">
-                  <strong>Needs improvement:</strong> <?= '.$row['review'].' ; ?>
-                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>';
-                 }
-
-                 else if ($row['review'] != NULL ){
-                 echo '<div class="alert alert-warning alert-dismissible fade show" role="alert">
-                  <strong>Needs improvement:</strong>  '.$row["review"].'
-                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>';
-                 }
-
-
-                }
-
-                
-                 
-                
-          ?>
+ 
 
 
     <div class="row">
