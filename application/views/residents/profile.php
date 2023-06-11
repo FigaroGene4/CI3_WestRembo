@@ -149,6 +149,16 @@ if ($email != false && $password != false) {
  
   background-color: #001D3D;
 }
+
+.alert-danger{
+  height: 55px;
+  font-size: 20px;
+}
+.alert-success{
+  height: 55px;
+  font-size: 20px;
+}
+
   </style>
 
 <?php
@@ -181,39 +191,103 @@ if ($result->num_rows > 0) {
     $_SESSION['baranggay'] = $baranggay;
     $_SESSION['postalCode'] = $postalCode;
 
+    
+
+    
     echo '<div class="text-center">';
     echo '<img class="user-img rounded-circle" src="images/' . $img . '" ><br><br>';
     echo '</div>';
 
     echo '<div class="row">';
     
+  
+    if (isset($_SESSION['error'])) {
+      echo
+      "
+          <div class='alert alert-danger text-center'>
+              <button class='close'>&times;</button>
+              " . $_SESSION['error'] . "
+          </div>
+          ";
+      unset($_SESSION['error']);
+    }
+    if (isset($_SESSION['success'])) {
+      echo
+      "
+          <div class='alert alert-success text-center'>
+              <button class='close'>&times;</button>
+              " . $_SESSION['success'] . "
+          </div>
+          ";
+      unset($_SESSION['success']);
+    }
+  
+
     // Column 1
     echo '<div class="col-md" style="margin-left: 20px;">';
+    echo '<form method="POST" action= "">';
     echo '<label for="firstname" class="small" style="font-size: 20px;">First Name:</label>';
-    echo '<input type="text" id="firstname" name="firstname" value="' . $firstname . '" readonly class="form-control input-lg" style="background-color: #f2f2f2; width: 70%;">';
+    echo '<input type="text" id="firstname" name="firstname" value="' . $firstname . '" class="form-control input-lg" style="background-color: #f2f2f2; width: 70%;">';
     echo '<br>';
+    echo '<input type="text" id="id" name="id" style=" display: none" value="' . $id . '" class="form-control input-lg" style="background-color: #f2f2f2; width: 70%;">';
     echo '<label for="contactnumber" class="small" style="font-size: 20px;">Contact Number:</label>';
-    echo '<input type="text" id="contactnumber" name="contactnumber" value="' . $contactnumber . '" readonly class="form-control input-lg" style="background-color: #f2f2f2; width: 70%;">';
+    echo '<input type="text" id="contactnumber" name="contactnumber" value="' . $contactnumber . '" class="form-control input-lg" style="background-color: #f2f2f2; width: 70%;">';
     echo '</div>';
-    
+
+
     // Column 2
     echo '<div class="col-md" style="margin-left: 20px;">';
     echo '<label for="lastname" class="small" style="font-size: 20px;">Last Name:</label>';
-    echo '<input type="text" id="lastname" name="lastname" value="' . $lastname . '" readonly class="form-control input-lg" style="background-color: #f2f2f2; width: 70%;">';
+    echo '<input type="text" id="lastname" name="lastname" value="' . $lastname . '" class="form-control input-lg" style="background-color: #f2f2f2; width: 70%;">';
     echo '<br>';
     echo '<label for="address" class="small" style="font-size: 20px;">Address:</label>';
-    echo '<input type="text" id="address" name="address" value="' . $address . '" readonly class="form-control input-lg" style="background-color: #f2f2f2; width: 70%;">';
+    echo '<input type="text" id="address" name="address" value="' . $address . '" class="form-control input-lg" style="background-color: #f2f2f2; width: 70%;">';
     echo '</div>';
-    
+
     echo '</div>'; // End row
+    echo '<div class="d-flex justify-content-end mt-3">';
+    echo '<button type="submit" name="submitbtn" class="btn btn-success" style="background-color: #001D3D; border-color: #001D3D;">Update</button>';
+    echo '</div>';
+    echo '</form>';
+
+    
+    
+    if (isset($_POST['submitbtn'])) {
+      $id_client = $_POST['id'];
+      $firstNameClient = $_POST['firstname'];
+      $lastNameClient = $_POST['lastname'];
+      $contactNumber = $_POST['contactnumber'];
+    
+  
+    
+      $stmt = $conn->prepare("UPDATE table_residents SET firstName = ?, lastName = ?, contactNumber = ? WHERE id = ?");
+  
+  
+      $stmt->bind_param("ssss", $firstNameClient, $lastNameClient,$contactNumber, $id_client);
+  
+     
+      $result = $stmt->execute();
+  
+    if (!$stmt->execute()) {
+      $_SESSION['error'] = 'Error updating profile: ' . $stmt->error;
+    } else {
+      $_SESSION['success'] = 'Profile updated successfully';
+    }
+    
+  
+      $stmt->close();
+
+      header('Location: ' . $_SERVER['HTTP_REFERER']);
+      exit;
+
+  } 
+
   }
 }
 ?>
 
 
-<div class="d-flex justify-content-end mt-3">
-    <a class="btn btn-primary btn-lg" href="<?php echo base_url('editprofile'); ?>" role="button">Edit Profile</a>
-  </div>
+
 
 
   <script src="js1/jquery.min.js"></script>

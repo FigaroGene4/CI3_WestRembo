@@ -129,7 +129,7 @@ session_start();
                             <tbody>
                             <?php
                                     include_once('db_conn.php');
-                                    $sql = "SELECT * FROM table_sentimentanalysis2 where flag=0";
+                                    $sql = "SELECT * FROM table_sentimentanalysis where flag=0";
                                     $query = $conn->query($sql);
 
                                     while ($row = $query->fetch_assoc()) {
@@ -171,8 +171,7 @@ session_start();
                                         }
 
                                         // Usage example:
-                                        $sentiment = $row['sentiment'];
-                                        $imageHtml = getSentimentImage($sentiment);
+                        
                                         ?>
 
                             </table>

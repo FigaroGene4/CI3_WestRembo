@@ -5,7 +5,7 @@
 	include_once('connection.php');
 
 	if(isset($_GET['id'])){
-		$sql = "UPDATE table_sentimentanalysis2 SET flag = 1 WHERE id = '".$_GET["id"]."'";
+		$sql = "UPDATE table_sentimentanalysis SET flag = 1 WHERE id = '".$_GET["id"]."'";
 
 		//use for MySQLi OOP
 		if($conn->query($sql)){

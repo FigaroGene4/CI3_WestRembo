@@ -3,12 +3,12 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
+                <center><h6 class="modal-title" id="myModalLabel">Archieve Feedback</h6></center>
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <center><h4 class="modal-title" id="myModalLabel">Archieve Feedback</h4></center>
             </div>
             <div class="modal-body">	
-            	<p class="text-center">Are you sure you want to Delete</p>
-				<h2 class="text-center"><?php echo $row['word'].' '.$row['date']; ?></h2>
+            
+				<h5 class="text-center"><?php echo 'Are you sure you wanted to archieved feedback with ID '.' '.$row['id']. '?'; ?></h5>
 			</div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancel</button>

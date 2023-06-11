@@ -88,7 +88,7 @@ if($email != false && $password != false){
            <li class="dropdown scrollto"><a href="#"  style="color: white;"><span>Hello, <?php echo $fetch_info['firstName'] ?></span> <i class="bi bi-chevron-down"></i></a>
 
            <ul>
-              <li><a href="<?php echo base_url('profile'); ?>">Profile</a></li>
+              <li><a href="<?php echo base_url('profile'); ?>">Edit Profile</a></li>
            
               <li><a href="requestsandappointment.php">Change Password</a></li>
            

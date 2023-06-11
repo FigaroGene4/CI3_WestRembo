@@ -476,6 +476,7 @@ if (isset($_POST['wew'])) {
                  
     
                     //use for MySQLi-OOP
+                    
                     $query = $conn->query($sql);
                     while ($row = $query->fetch_assoc()) {
                         $classifier->learn($row['word'], $row['sentiment']);
