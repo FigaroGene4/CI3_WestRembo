@@ -92,6 +92,9 @@ session_start();
 </div>
 
                
+
+
+
                
             </div>
             <?php
@@ -119,28 +122,31 @@ session_start();
                     <div class="height10">
                         <table id="myTable" class="table text-left table-striped table-bordered">
                             <thead class="thead-dark">
-                            <th style="background-color: #001D3D;">ID</th>
-                                <th style="background-color: #001D3D;">DATE</th>
-                                <th style="background-color: #001D3D;">FEEDBACK</th>
+                            
+                                <th style="background-color: #001D3D;">Transaction Number</th>
+                                <th style="background-color: #001D3D;">Category</th>
+                                <th style="background-color: #001D3D;">Review</th>
+                                <th style="background-color: #001D3D;">Rating</th>
                                 <th style="background-color: #001D3D;">Sentiment</th>
-                                <th style="background-color: #001D3D;">EMOTAG</th>
                                 <th style="background-color: #001D3D;">ACTION</th>
                             </thead>
                             <tbody>
                             <?php
                                     include_once('db_conn.php');
-                                    $sql = "SELECT * FROM table_sentimentanalysis where flag=0";
+                                    $sql = "SELECT * FROM table_documentrequest";
                                     $query = $conn->query($sql);
 
                                     while ($row = $query->fetch_assoc()) {
+                                        $rating = $row['rate'];
+                                        
                                         echo "
                                         <tr>
-                                           <td>" . $row['id'] . "</td>
-                                        <td>" . $row['date'] . "</td>
-                                        <td>" . $row['word'] . "</td>
+                                           
+                                        <td>" . $row['transactionNumber'] . "</td>
+                                        <td>" . $row['category'] . "</td>
+                                        <td>" . $row['review'] . "</td>
+                                        <td>" . getSentimentImage($row['rate']) . "</td>
                                         <td>" . $row['sentiment'] . "</td>
-                                        <td>" . getSentimentImage($row['sentiment']) . "</td>
-
 
                                             <td>
                                 
@@ -156,22 +162,30 @@ session_start();
                                     ?>
 
                                         <?php
-                                        function getSentimentImage($sentiment)
+                                        function getSentimentImage($rating)
                                         {
-                                            switch ($sentiment) {
-                                                case 'positive':
+                                            switch ($rating) {
+                                                case 5:
                                                     return '<img src="stsf/5.png" style="top: 35px; left: 80px; margin-right: 10px; margin-bottom: 10px; width: 50px; height: 50px;">';
-                                                case 'neutral':
+                                                    break;
+                                                case 4:
                                                     return '<img src="stsf/4.png" style="top: 35px; left: 80px; margin-right: 10px; margin-bottom: 10px; width: 50px; height: 50px;">';
-                                                case 'negative':
+                                                    break;
+                                                case 3:
                                                     return '<img src="stsf/3.png" style="top: 35px; left: 80px; margin-right: 10px; margin-bottom: 10px; width: 50px; height: 50px;">';
-                                                default:
+                                                case 2:
                                                     return '<img src="stsf/2.png" style="top: 35px; left: 80px; margin-right: 10px; margin-bottom: 10px; width: 50px; height: 50px;">';
+                                                    break;
+                                                case 1:
+                                                    return '<img src="stsf/1.png" style="top: 35px; left: 80px; margin-right: 10px; margin-bottom: 10px; width: 50px; height: 50px;">';
+                                                    break;    
+                                                    
+                                            
                                             }
                                         }
 
                                         // Usage example:
-                        
+                                        
                                         ?>
 
                             </table>
@@ -188,3 +202,19 @@ session_start();
 
     </html>
 
+    <script src="jquery/jquery.min.js"></script>
+        <script src="bootstrap/js/bootstrap.min.js"></script>
+        <script src="datatable/jquery.dataTables.min.js"></script>
+        <script src="datatable/dataTable.bootstrap.min.js"></script>
+        <!-- generate datatable on our table -->
+        <script>
+          $(document).ready(function() {
+            //inialize datatable
+            $('#myTable').DataTable();
+
+            //hide alert
+           $(document).on('click', '.close', function() {
+              $('.alert').hide();
+            })
+          });
+        </script>

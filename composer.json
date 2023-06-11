@@ -13,7 +13,7 @@
 	"require": {
 		"php": ">=5.3.7",
 		"php-ai/php-ml": "^0.10.0",
-		"niiknow/bayes": "*"
+		"niiknow/bayes": "^1.1"
 	},
 	"suggest": {
 		"paragonie/random_compat": "Provides better randomness in PHP 5.x"
