@@ -67,14 +67,14 @@ session_start();
 
         <div class="row">
           
-             <div class="col-lg-4 col-md-6 col-sm-12 border border-white m-3 bg-white" style="height: 200px; border-radius: 20px;">
+             <div class="col-lg-4 col-md-6 col-sm-12 border border-white m-3 bg-white" style="height: 250px; border-radius: 20px;">
              <h2 class="dslabel2">Today's payment</h2>
                 <?php
 
 
                 include_once('db_conn.php');
                 date_default_timezone_set('Asia/Taipei');
-                $dateNow = date('m/d/Y');
+                $dateNow = date('Y-m-d');
                 $date = date('F d, Y | g:iA');
                 $sql = "SELECT *  FROM table_documentrequest where datePaymentAccepted = '$date' AND status = 'Payment Approved'";
 
@@ -85,79 +85,122 @@ session_start();
                 echo '<br><img src="philippine-peso.png" alt="Avatar" width="20px">';
 
 
-                $sql = "SELECT sum(price) as price FROM table_documentrequest WHERE status ='Payment Approved' AND datePaymentAccepted = '$dateNow'";
+                $sql = "SELECT sum(price) as amount FROM table_documentrequest WHERE status ='Printed' AND dateOfSched = '$dateNow'";
+
 
                 $result = $conn->query($sql);
 
                 while ($row = mysqli_fetch_assoc($result)) {
 
+                  $price = $row['amount'];
 
 
+                  
 
 
-                  echo "Today's system earnings:<strong> ₱" . $row['price'] . "</strong>";
+                  echo "Today's system earnings:<strong> ₱" . $price . "</strong>";
                 }
                 ?>
-                <table style="width:50%">
+                <table style="width:80%">
                   <tr>
-                    <th>New Clients:</th>
+                    <th>New Residents:</th>
+                    
                     <td><?php
                         $dateNow = date('Y-m-d');
                         $q = "SELECT * FROM table_residents WHERE dateRegistered='$dateNow' ";
                         $res = mysqli_query($conn, $q);
                         echo mysqli_num_rows($res);
-                        echo " New Clients";
+                        if (mysqli_num_rows($res) == 1){
+                          echo " New Resident";
+                        }
+                        else{
+                          echo " New Residents";
+                        }
+                        
 
                         ?> </td>
+
+                        
                   </tr>
                   
+                  <tr>
+                    <th>Transactions:</th>
+                    
+                    <td><?php
+                        $dateNow = date('Y-m-d');
+                        $q = "SELECT * FROM table_documentrequest WHERE dateOfSched ='$dateNow' ";
+                        $res = mysqli_query($conn, $q);
+                        echo mysqli_num_rows($res);
+                        
+
+                        
+                        if (mysqli_num_rows($res) == 1){
+                          echo " Transaction";
+                        }
+                        else{
+                          echo " Transactions";
+                        }
+                        
+
+                        ?> </td>
+
+                        
+                  </tr> 
                 </table>
           
 
             </div>
 
-            <div class="col-lg-4 col-md-6 col-sm-12 border border-white m-3 bg-white" style="height: 200px; border-radius: 20px;">
+            <div class="col-lg-4 col-md-6 col-sm-12 border border-white m-3 bg-white" style="height: 250px; border-radius: 20px;">
                 <h2 class="dslabel2">Monthly reports</h2>
 
                     <?php
                     include_once('db_conn.php');
                     date_default_timezone_set('Asia/Taipei');
-                    $dateNow = date('m/d/Y');
-                    $date = date('M');
-                    $sql = "SELECT *  FROM table_documentRequest where datePaymentAccepted = '$date' AND status = 'Payment Approved'";
+                    $dateNow = date('Y-m-d');
+                    $date = date('F');
+                    $dateM = date('n');
+                    
 
                     echo 'Month of ' . $date;
                     echo '<br>';
 
                     echo '<br><img src="philippine-peso.png" alt="Avatar" width="20px">';
+                 
 
-
-                    $sql = "SELECT sum(price) as price FROM table_documentrequest WHERE status ='Payment Approved' AND datePaymentAccepted = '$dateNow'";
+                    $sql = "SELECT sum(price) as amount FROM table_documentrequest WHERE status ='Printed' AND MONTH(dateOfSched) = '$dateM'";
 
                     $result = $conn->query($sql);
 
                     while ($row = mysqli_fetch_assoc($result)) {
-                      echo "Month's system earnings:<strong> ₱" . $row['price'] . "</strong>";
+                      echo "Month's system earnings:<strong> ₱" . $row['amount'] . "</strong>";
+                      
                     }
                     ?>
                     <table style="width:50%">
                       <tr>
-                        <th>New Clients:</th>
+                        <th>New Residents:</th>
                         <td><?php
                             $dateNow = date('Y-m-d');
                             $month = date('m');
-                            $q = "SELECT * FROM table_residents WHERE dateRegistered='$dateNow' ";
+                            $q = "SELECT * FROM table_residents WHERE MONTH(dateRegistered)='$dateM' ";
                             $res = mysqli_query($conn, $q);
                             echo mysqli_num_rows($res);
-                            echo " New Clients";
+                            echo " New Residents";
                             ?> </td>
                       </tr>
             </table>
        </div>
 
-       <div class="col-lg-3 col-md-6 col-sm-10 mt-3 ml-3 border border-white bg-white" style="height: 200px; border-radius: 20px;">
+
+
+
+
+
+       <div class="col-lg-3 col-md-6 col-sm-10 mt-3 ml-3 border border-white bg-white" style="height: 250px; border-radius: 20px;">
           <h2 class="dslabel2">Search for specific date</h2>
-          <form action="#" method="POST">
+          <form action="" method="POST">
+            
             <input id="datepicker" width="250" name="datepicker" required placeholder="Select your preffered date" />
             <script>
               $('#datepicker').datepicker({
@@ -167,112 +210,127 @@ session_start();
 
               });
             </script>
-            <br><br>
-            <input class="btn btn-primary" type="submit" name="report" value="Search Report">
 
 
 
-          </form>
-                <?php
-
-                if (isset($_POST['report'])) {
-
-                  $date = $_POST['datepicker'];
-                  echo '<div class="container">
-                  <div class="row">';
-                  echo '<div class="col-md-12">';
-                  include_once('db_conn.php');
-                  date_default_timezone_set('Asia/Taipei');
-                  $newDate = date("F d, Y", strtotime($date));
-
-                  $sql = "SELECT *  FROM table_documentrequest where datePaymentAccepted= '$date' AND status = 'Payment Approved'";
-                  echo '<br><br>Date: ' . $newDate;
-                  echo '<br>';
-
-                  echo '<br><img src="philippine-peso.png" alt="Avatar" width="20px">';
-
-
-                  $sql = "SELECT sum(price) as price FROM table_documentrequest WHERE status ='Payment Approved' AND datePaymentAccepted = '$date'";
-
-                  $result = $conn->query($sql);
-
-                  while ($row = mysqli_fetch_assoc($result)) {
 
 
 
-                    if ($row['price'] > 0) {
-                      echo "System  earnings:<strong> ₱" . $row['price'] . "</strong>";
-                    } else {
-                      echo 'No System Earnings!';
-                    }
 
 
 
-                    echo ' <table style="width:20%">
-                    <tr>
-                      <th>New Clients:</th>
-                      <td>';
-
-                    $newDatez = date("Y-m-d", strtotime($date));
-                    $q = "SELECT * FROM table_residents WHERE dateRegistered='$newDatez' ";
-
-                    $res = mysqli_query($conn, $q);
-                    echo mysqli_num_rows($res);
-                    echo " New Clients";
-
-                    echo '</td>
-                      </tr>
-                      <tr>
-                        <th>Pamper Artist:</th>
-                        <td>';
-
-                    $newDatez = date("Y-m-d", strtotime($date));
-                    $q = "SELECT * FROM table_artist WHERE datejoined='$newDatez' ";
-                    $res = mysqli_query($conn, $q);
-                    echo mysqli_num_rows($res);
-                    echo " New Pamper Artists";
-
-                    echo '</td>
-                    </tr>
-                    <tr>
-                      <th>Transactions:</th>
-                      <td>';
 
 
-                      $newDatez = date("m/d/Y", strtotime($date));
-                    $q = "SELECT * from table_book where status='Service Complete' AND datebooking ='$newDatez'";
-                    $res = mysqli_query($conn, $q);
-                    echo mysqli_num_rows($res);
-                    echo ' New transactions';
+
+
+
+
+
+
+
+
+
+        
+            <input class="btn btn-primary" type="submit" name="report" value="Search Report"  data-toggle="modal" data-target="#exampleModal">
+            </form>
+
+            <?php 
+          if(isset($_POST['report'])){
+
+            $getDate = $_POST['datepicker'];
+            $newDate = date('Y-m-d', strtotime($getDate));
+            $Fdate = date('F d, Y', strtotime($getDate));
+
+            $sql = "SELECT *  FROM table_documentrequest where datePaymentAccepted = '$date' AND status = 'Payment Approved'";
+
+                
+               
+
+
+              
+
+                $sql = "SELECT sum(price) as amount FROM table_documentrequest WHERE status ='Printed' AND dateOfSched = '$newDate'";
+
+
+                $result = $conn->query($sql);
+
+                while ($row = mysqli_fetch_assoc($result)) {
+
+                  $price = $row['amount'];
+
+
+                  
+
+
+                  echo $Fdate ;
+                  if ($price == 0 ){
+                    echo ' | No earnings';
                   }
+                  else{
+                    echo ' | <img src="philippine-peso.png" alt="Avatar" width="20px">';
 
-                  echo '</table></div></div></div>';
-
-
-
-
-
-                include_once('db_conn.php');
-                        $sql = "SELECT firstName, lastName FROM table_residents";
-                        $result = mysqli_query($conn, $sql);
-                        $data_array = array();
-                        $firstname = 'firstname';
-                        
-                        while ($row = mysqli_fetch_assoc($result)) {
-                          $data_array[$row['firstName']] = $row['lastName'];
-                          
-                        }
-
-                        print_r( $data_array);
+                    echo "  <strong> ₱" . $price . "</strong>";
+                  }
                 }
-           ?>
-          </div>
+                ?>
+                <table style="width:100%">
+                  <tr>
+                    <th>New Residents:</th>
+                    
+                    <td><?php
+                        $dateNow = date('Y-m-d');
+                        $q = "SELECT * FROM table_residents WHERE dateRegistered='$newDate' ";
+                        $res = mysqli_query($conn, $q);
+                        echo mysqli_num_rows($res);
+                        if (mysqli_num_rows($res) == 1){
+                          echo " New Resident";
+                        }
+                        else{
+                          echo " New Residents";
+                        }
+                        
+
+                        ?> </td>
+
+                        
+                  </tr>
+                  
+                  <tr>
+                    <th>Transactions:</th>
+                    
+                    <td><?php
+                        
+                        $q = "SELECT * FROM table_documentrequest WHERE dateOfSched ='$newDate' ";
+                        $res = mysqli_query($conn, $q);
+                        echo mysqli_num_rows($res);
+                        
+
+                        
+                        if (mysqli_num_rows($res) == 1){
+                          echo " Transaction";
+                        }
+                        else{
+                          echo " Transactions";
+                        }
+                        
+                      }
+                        ?> </td>
+
+                        
+                  </tr> 
+                </table>
+          
 
           
-          <div class="col-lg-4 col-md-6 col-sm-12 border border-white m-3 bg-white" style="height: 200px; border-radius: 20px;">
+         
+          
+       </div>
+               
+          
+          <div class="col-lg-4 col-md-6 col-sm-12 border border-white m-3 bg-white" style="height: 200px; border-radius: 20px;"><br>
                 <h2 class="dslabel2">Back up Records</h2>
                 <div class="container">
-              <h6>Residents Records</h6>
+              <h6>Download all records from the system</h6>
 
              
               <a href="export.php"><button class="btn btn-sm buttonz rs-btn" name="button" style="background-color: #001D3D; color: #ffff;">
@@ -321,3 +379,10 @@ session_start();
 </body>
 
 </html>
+
+<script>
+  $('#myForm').on('submit', function(e){
+  $('#exampleModal').modal('show');
+  e.preventDefault();
+});
+</script>
