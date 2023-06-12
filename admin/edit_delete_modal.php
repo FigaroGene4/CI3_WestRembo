@@ -39,7 +39,7 @@
 					<div class="row">
 						
 						<div class="col-md-12 text-center">
-						<h4 class="modal-title" id="myModalLabel" style="text-align: center; color: #fff;">Edit information</h4>
+						<h4 class="modal-title" id="myModalLabel" style="text-align: center; color: #fff;">Resident Infoz</h4>
 						
 						</div>
 					</div>
@@ -60,67 +60,69 @@
 						<h2 style="padding-left: 50px; font-weight: bold; text-align: left"><?php echo $row['firstName'] . ' ' . $row['lastName']; ?></h2>
 					</div>
 
-<div class="col-md-8">
+			<div class="col-md-8">
+				<div class="container" style="margin-top: 60px;">
+					<div class="row">
+						<div class="col-md-6">
+						<h3 style="font-weight: bold; font-size: 20px;">First Name:</h3>
+						<span>
+						<input type="text" name="firstNameClient" class="form-control user-fields" value="<?php echo $row['firstName']; ?>">
 
-    <div class="container" style="margin-top: 25px;">
-        <div class="row">
-            <div class="col-md-6">
-                    <form method="POST" action="edit.php">
-				<h3 style="font-weight: bold; font-size: 20px;">First Name:</h3>
-                <span>
-                        <input type="text" name="firstName" class="form-control user-fields mb-2" value="<?php echo $row['firstName']; ?>">
-                </span>
-                <h3 style="font-weight: bold; font-size: 20px;">Contact Number:</h3>
-                <span>
-                    <input type="text" name="contactNumber" class="form-control user-fields mb-2" value="<?php echo $row['contactNumber']; ?>">
-                </span>
+						</span>
+						<h3 style="font-weight: bold; font-size: 20px;">Contact Number:</h3>
+						<span>
+							
+							<input type="text" name="firstNameClient" class="form-control user-fields" value="<?php echo $row['contactNumber']; ?>">
+						</span>
+						
+						<h3 style="font-weight: bold; font-size: 20px;">Email:</h3>
+						<span>
+						
+							<input type="text" name="firstNameClient" class="form-control user-fields" value="<?php echo $row['email']; ?>">
+						</span>
+						</div>
+						<div class="col-md-6 mb-4">
+					
+						<h3 style="font-weight: bold; font-size: 20px;">Last Name:</h3>
+						<span>
+							
+							<input type="text" name="firstNameClient" class="form-control user-fields" value="<?php echo $row['lastName']; ?>">
+						</span>
+					
+						<h3 style="font-weight: bold; font-size: 20px;">Birthdate:</h3>
+						<span>
+							
+							<input type="text" name="firstNameClient" class="form-control user-fields" value="<?php echo $row['birthdate']; ?>">
+						</span>
+						
+						<h3 style="font-weight: bold; font-size: 20px;">Address:</h3>
+						<span>
+						<input type="text" name="address" class="form-control" value="<?php echo htmlspecialchars($row['houseNumber'] . ' ' . $row['streetNumber'] . ', Sitio ' . $row['sitio']); ?>">
 
-                <h3 style="font-weight: bold; font-size: 20px;">Email:</h3>
-                <span>
-                    <input type="text" name="email" class="form-control user-fields mb-2" value="<?php echo $row['email']; ?>">
-                </span>
-				
-                <h3 style="font-weight: bold; font-size: 20px;">Birthdate:</h3>
-                <span>
-                    <input type="text" name="birthdate" class="form-control user-fields mb-2" value="<?php echo $row['birthdate']; ?>">
-                </span>
-            </div>
-            <div class="col-md-6 mt-3">
-                <h3 style="font-weight: bold; font-size: 20px;">Last Name:</h3>
-                <span>
-                    <input type="text" name="lastName" class="form-control user-fields mb-2" value="<?php echo $row['lastName']; ?>">
-                </span>
-
-
-                <h3 style="font-weight: bold; font-size: 20px;">House Number:</h3>
-                <span>
-                    <input type="text" name="houseNumber" class="form-control mb-2" value="<?php echo $row['houseNumber']; ?>">
-                </span>
-
-				<h3 style="font-weight: bold; font-size: 20px;">Sitio:</h3>
-                <span>
-                    <input type="text" name="sitio" class="form-control mb-2" value="<?php echo $row['sitio']; ?>">
-                </span>
-
-				<h3 style="font-weight: bold; font-size: 20px;">Street:</h3>
-                <span>
-                    <input type="text" name="street" class="form-control mb-2" value="<?php echo $row['streetNumber']; ?>">
-                </span>
-				<input type="text" name="id" class="form-control user-fields" style=" display: none"   value="<?php echo $row['id']; ?>">
-            </div>
-        </div>
-    </div>
+					
+					</span>
+					</div>
+				</div>
+			</div>
+			</div>
+		</div>
+	</div>
 </div>
 <div class="modal-footer">
-    <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancel</button>
-    <button type="submit" name="submitbtn" class="btn btn-success" style="background-color: #001D3D; border-color: #001D3D;">
-        <span class="glyphicon glyphicon-check"></span> Update
-    </button>
-</form>
+				<button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancel</button>
+				<button type="submit" name="edit" class="btn btn-success" style="background-color:  #001D3D; border-color:  #001D3D;"><span class="glyphicon glyphicon-check"></span> Update</a> </button>
+				</form>
+
+
+			</div>
 </div>
+
+
+			
+		</div>
+	</div>
 </div>
-</div>
-</div>
+
 
 <!-- dh -->
 
@@ -204,10 +206,21 @@
 
 
 
+
+
+
+
+
+
+
+
+
 			<div class="modal-footer">
 				<button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancel</button>
-				<button type="submit" name="edit.php" class="btn btn-success"><span class="glyphicon glyphicon-check"></span> Update</a> </button>
+				<button type="submit" name="edit" class="btn btn-success"><span class="glyphicon glyphicon-check"></span> Update</a> </button>
 				</form>
+
+
 			</div>
 		</div>
 	</div>
@@ -272,19 +285,39 @@
 									<li class="list-group-item">Porta ac consectetur ac</li>
 									<li class="list-group-item">Vestibulum at eros</li>
 								</ul>
+
+
 							</div>
+
+
+
+
 						</div>
 
 					</div>
 				</div>
+
+
+
+
 			</div>
+
+
+
+
+
+
+
+
+
 
 
 
 			<div class="modal-footer">
 				<button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancel</button>
-				<button type="submit" name="edit.php" class="btn btn-success"><span class="glyphicon glyphicon-check"></span> Update</a> </button>
-			</form>
+				<button type="submit" name="edit" class="btn btn-success"><span class="glyphicon glyphicon-check"></span> Update</a> </button>
+				</form>
+
 
 			</div>
 		</div>
