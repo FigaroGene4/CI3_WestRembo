@@ -264,28 +264,243 @@ if ($email != false && $password != false) {
 
       $category = $_GET['category'];
 
+      
+
 
       if ($category == 'bid') {
-        echo '<h2 class="display-6" style="color: #001D3D; font-weight: bold;">Request for Barangay ID</h2>';
-        echo '<h3 class="display-8" style="color: #001D3D;">You must provide a reason for requesting barangay ID</h3>';
-        $categ = 'Baranggay ID';
+        
+        $sel = mysqli_query($con, "SELECT * FROM `table_documentrequest` WHERE email = '$email' AND  category = 'Baranggay ID'");
+      if (mysqli_num_rows($sel) > 0) {
+           $errors['reqerror'] ="You already submitted a same request!";
+           header  (base_url('requst?category?=bid'));}
 
+      else{
+            echo '<h2 class="display-6" style="color: #001D3D; font-weight: bold;">Request for Barangay ID</h2>';
+            echo '<h3 class="display-8" style="color: #001D3D;">You must provide a reason for requesting barangay ID</h3>';
+            $categ = 'Baranggay ID';
+            echo '<div class="container center">
+
+            <form action="#" method="post">
+        <div class="form-group mt-3">
+          <label for="comment">Reason for Request:</label>
+          <textarea class="form-control" rows="5" id="comment" name="reason" required></textarea>
+        </div>
+      
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="exampleInputEmail1">Place of birth:</label>
+              <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter birth place" name="birthplace">
+            </div>
+      
+            <div class="form-group">
+              <label for="exampleInputEmail1">Period of Residency in Barangay West Rembo:</label>
+              <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter residency period" name="period">
+            </div>
+      
+            <div class="form-group">
+              <label for="exampleFormControlSelect1">Registered Makati City Voter?</label>
+              <select class="form-control" id="exampleFormControlSelect1" name="voter">
+                <option>Yes</option>
+                <option>No</option>
+              </select>
+            </div>
+          </div>
+      
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="exampleInputEmail1">House Owner:</label>
+              <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter name of house owner" name="houseOwner">
+            </div>
+      
+            <div class="form-group">
+              <label for="exampleInputEmail1">Relation to house owner:</label>
+              <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter relationship with owner" name="relation">
+            </div>
+          </div>
+        </div>
+      
+        <div class="d-flex justify-content-end mt-3">
+          <button name="request" type="submit" class="btn btn-submit btn-lg">Submit</button>
+        </div>
+      </form>
+      ';
+          }
         $_SESSION['categ'] = $categ;
       } elseif ($category == 'bc') {
+
+        $sel = mysqli_query($con, "SELECT * FROM `table_documentrequest` WHERE email = '$email' AND  category = 'Baranggay Clearance'");
+        if (mysqli_num_rows($sel) > 0) {
+             $errors['reqerror'] ="You already submitted a same request!";
+             header  (base_url('requst?category?=bid'));}
+        else{  
         echo '<h2 class="display-6" style="color: #001D3D; font-weight: bold;">Request Barangay Clearance</h2>';
         echo '<h3 class="display-8" style="color: #001D3D;">You must provide a reason for requesting Barangay Clearance</h3>';
         $categ = 'Baranggay Clearance';
+        echo '<div class="container center">
+
+            <form action="#" method="post">
+        <div class="form-group mt-3">
+          <label for="comment">Reason for Request:</label>
+          <textarea class="form-control" rows="5" id="comment" name="reason" required></textarea>
+        </div>
+      
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="exampleInputEmail1">Place of birth:</label>
+              <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter birth place" name="birthplace">
+            </div>
+      
+            <div class="form-group">
+              <label for="exampleInputEmail1">Period of Residency in Barangay West Rembo:</label>
+              <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter residency period" name="period">
+            </div>
+      
+            <div class="form-group">
+              <label for="exampleFormControlSelect1">Registered Makati City Voter?</label>
+              <select class="form-control" id="exampleFormControlSelect1" name="voter">
+                <option>Yes</option>
+                <option>No</option>
+              </select>
+            </div>
+          </div>
+      
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="exampleInputEmail1">House Owner:</label>
+              <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter name of house owner" name="houseOwner">
+            </div>
+      
+            <div class="form-group">
+              <label for="exampleInputEmail1">Relation to house owner:</label>
+              <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter relationship with owner" name="relation">
+            </div>
+          </div>
+        </div>
+      
+        <div class="d-flex justify-content-end mt-3">
+          <button name="request" type="submit" class="btn btn-submit btn-lg">Submit</button>
+        </div>
+      </form>
+      ';
+      }   
         $_SESSION['categ'] = $categ;
       } elseif ($category == 'bp') {
+        $sel = mysqli_query($con, "SELECT * FROM `table_documentrequest` WHERE email = '$email' AND  category = 'Business Permit'");
+        if (mysqli_num_rows($sel) > 0) {
+             $errors['reqerror'] ="You already submitted a same request!";
+             header  (base_url('requst?category?=bid'));}
+        else{  
         echo '<h2 class="display-6" style="color: #001D3D; font-weight: bold;">Request Business Permit</h2>';
         echo '<h3 class="display-8" style="color: #001D3D;">You must provide a reason for requesting Business Permit</h3>';
         $categ = 'Business Permit';
+        echo '<div class="container center">
+
+            <form action="#" method="post">
+        <div class="form-group mt-3">
+          <label for="comment">Reason for Request:</label>
+          <textarea class="form-control" rows="5" id="comment" name="reason" required></textarea>
+        </div>
+      
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="exampleInputEmail1">Place of birth:</label>
+              <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter birth place" name="birthplace">
+            </div>
+      
+            <div class="form-group">
+              <label for="exampleInputEmail1">Period of Residency in Barangay West Rembo:</label>
+              <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter residency period" name="period">
+            </div>
+      
+            <div class="form-group">
+              <label for="exampleFormControlSelect1">Registered Makati City Voter?</label>
+              <select class="form-control" id="exampleFormControlSelect1" name="voter">
+                <option>Yes</option>
+                <option>No</option>
+              </select>
+            </div>
+          </div>
+      
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="exampleInputEmail1">House Owner:</label>
+              <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter name of house owner" name="houseOwner">
+            </div>
+      
+            <div class="form-group">
+              <label for="exampleInputEmail1">Relation to house owner:</label>
+              <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter relationship with owner" name="relation">
+            </div>
+          </div>
+        </div>
+      
+        <div class="d-flex justify-content-end mt-3">
+          <button name="request" type="submit" class="btn btn-submit btn-lg">Submit</button>
+        </div>
+      </form>
+      ';
+      }   
         $_SESSION['categ'] = $categ;
       } elseif ($category == 'bldg') {
-        echo '<h2 class="display-6" style="color: #001D3D; font-weight: bold;">Request  Barangay Indigency </h2>';
-        echo '<h3 class="display-8" style="color: #001D3D;">You must provide a reason for requesting Barangay Indigency </h3>';
-        
+        $sel = mysqli_query($con, "SELECT * FROM `table_documentrequest` WHERE email = '$email' AND  category = 'Building Permit'");
+        if (mysqli_num_rows($sel) > 0) {
+             $errors['reqerror'] ="You already submitted a same request!";
+             header  (base_url('requst?category?=bid'));}
+        else{  
+        echo '<h2 class="display-6" style="color: #001D3D; font-weight: bold;">Request Building Permit</h2>';
+        echo '<h3 class="display-8" style="color: #001D3D;">You must provide a reason for requesting Building Permit</h3>';
         $categ = 'Building Permit';
+        echo '<div class="container center">
+
+            <form action="#" method="post">
+        <div class="form-group mt-3">
+          <label for="comment">Reason for Request:</label>
+          <textarea class="form-control" rows="5" id="comment" name="reason" required></textarea>
+        </div>
+      
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="exampleInputEmail1">Place of birth:</label>
+              <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter birth place" name="birthplace">
+            </div>
+      
+            <div class="form-group">
+              <label for="exampleInputEmail1">Period of Residency in Barangay West Rembo:</label>
+              <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter residency period" name="period">
+            </div>
+      
+            <div class="form-group">
+              <label for="exampleFormControlSelect1">Registered Makati City Voter?</label>
+              <select class="form-control" id="exampleFormControlSelect1" name="voter">
+                <option>Yes</option>
+                <option>No</option>
+              </select>
+            </div>
+          </div>
+      
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="exampleInputEmail1">House Owner:</label>
+              <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter name of house owner" name="houseOwner">
+            </div>
+      
+            <div class="form-group">
+              <label for="exampleInputEmail1">Relation to house owner:</label>
+              <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter relationship with owner" name="relation">
+            </div>
+          </div>
+        </div>
+      
+        <div class="d-flex justify-content-end mt-3">
+          <button name="request" type="submit" class="btn btn-submit btn-lg">Submit</button>
+        </div>
+      </form>
+      ';
+      }   
         $_SESSION['categ'] = $categ;
       }
 
@@ -294,53 +509,7 @@ if ($email != false && $password != false) {
 
       ?>
       <br><br>
-      <div class="container center">
-
-      <form action="#" method="post">
-  <div class="form-group mt-3">
-    <label for="comment">Reason for Request:</label>
-    <textarea class="form-control" rows="5" id="comment" name="reason" required></textarea>
-  </div>
-
-  <div class="row">
-    <div class="col-md-6">
-      <div class="form-group">
-        <label for="exampleInputEmail1">Place of birth:</label>
-        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter birth place" name="birthplace">
-      </div>
-
-      <div class="form-group">
-        <label for="exampleInputEmail1">Period of Residency in Barangay West Rembo:</label>
-        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter residency period" name="period">
-      </div>
-
-      <div class="form-group">
-        <label for="exampleFormControlSelect1">Registered Makati City Voter?</label>
-        <select class="form-control" id="exampleFormControlSelect1" name="voter">
-          <option>Yes</option>
-          <option>No</option>
-        </select>
-      </div>
-    </div>
-
-    <div class="col-md-6">
-      <div class="form-group">
-        <label for="exampleInputEmail1">House Owner:</label>
-        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter name of house owner" name="houseOwner">
-      </div>
-
-      <div class="form-group">
-        <label for="exampleInputEmail1">Relation to house owner:</label>
-        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter relationship with owner" name="relation">
-      </div>
-    </div>
-  </div>
-
-  <div class="d-flex justify-content-end mt-3">
-    <button name="request" type="submit" class="btn btn-submit btn-lg">Submit</button>
-  </div>
-</form>
-
+      
 
 
         <?php
