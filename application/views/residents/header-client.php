@@ -83,8 +83,13 @@ if($email != false && $password != false){
 
         <div class="collapse navbar-collapse" id="navmenu">
           <ul class="navbar-nav ms-auto">
-           
+          
             <i class="bi bi-file-earmark-text "  style="color: #ffff;"></i><a id='noti_number'class="nav-link scrollto active"  style="color: #ffff;" href="<?php echo base_url('documents'); ?>">My Request</a>
+
+            <i class=" "  style="color: #ffff;"></i><a id='noti_number'class="nav-link scrollto active"  style="color: #ffff;" href="<?php echo base_url('announce'); ?>">Announcements</a>
+
+
+
            <li class="dropdown scrollto"><a href="#"  style="color: white;"><span>Hello, <?php echo $fetch_info['firstName'] ?></span> <i class="bi bi-chevron-down"></i></a>
 
            <ul>

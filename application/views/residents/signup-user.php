@@ -72,12 +72,17 @@
     height: auto;
   }
 
+  .padding{
+    padding-left: 200px;
+    padding-right: 200px;
+  }
+
   
 </style>
 
 <body>
 
-<div class="container">
+<div class="container padding">
   <div class="row">
     <div class="col-md-12 form">
       <form action="<?php echo base_url('signup'); ?>" method="POST" autocomplete="" enctype="multipart/form-data">

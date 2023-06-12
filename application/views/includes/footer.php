@@ -101,7 +101,7 @@ footer col ul li a{
 </style>
 
 <div class="container-fluid">
-  <footer class="row row-cols-1 row-cols-sm-2 row-cols-md-5 py-5 my-5 min-height: 100vh ">
+  <footer class="row row-cols-1 row-cols-sm-2 row-cols-md-5 ">
     
     
     <div class="col-6">

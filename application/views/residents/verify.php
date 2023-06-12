@@ -359,11 +359,11 @@ input:checked + .slider:before {
 </div>
 
 
-<div class="container ">
+<div class="container text-justify-left " style="padding:90px">
 
 <br><br>
 
-    <h5>Please upload a valid ID for Verification:<h5>
+    <h5>Please upload a PNG or JPEG file of your valid ID for verification:<h5>
     <br><br>
     <ul>
   <li> School ID </li>
@@ -372,7 +372,7 @@ input:checked + .slider:before {
   <li>Voter's Certificate/ ID </li>
   <li>Philhealth</li>
   <li>Birth Certificate</li>
-  <li>Credit Card Front and Back ;)</li>
+  
   <li>TIN ID </li>
   <li>NBI Clearance</li>
   

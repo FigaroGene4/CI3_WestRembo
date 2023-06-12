@@ -1,59 +1,67 @@
-
+<?php //include 'includes/header.php';?>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@500&display=swap');
-
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
-@font-face{
+    @font-face{
     src: url(css/fonts/WorkSans-Regular.ttf);
 }
 h1{
 
-    color: #000814;
-	  font-family: 'Work Sans', sans-serif;
-    font-style: normal;
-    font-weight: 700;
+color: #000814;
+font-family: 'Work Sans', sans-serif;
+font-style: normal;
+font-weight: 700;
 }
 .card-text{
     font-family: 'Work Sans', sans-serif;
     font-style: normal;
     font-weight: 400;
 }
-
-.custom-heading {
-  color: #001D3D;
-  font-weight: bolder;
+h3{
+    font-family: 'Work Sans', sans-serif;
+    font-style: normal;
+    font-weight: 700;
 }
-
-.custom-paragraph {
-  color: #001D3D;
+p{
+    font-weight: 500;
 }
-.custom-title {
-  color:  #001D3D;
-  font-weight: bolder;
-}
-
-.custom-date {
-  color:  #001D3D;
-  font-weight: bold;
-}
-
-
 </style>
-<!--body-->
 
-<div class="container">
-  <div class="p-4 shadow-4 jbt">
-    <h2 class="htxt custom-heading">News and Announcements</h2>
-    <p class="custom-paragraph" style="font-style: italic;">
-      Daily updates from our community
-    </p>
+<!--<div class="container" style="background-image: url('wrp-assets/footer-bg.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    padding: 120px;">-->
+   <div class="container" style="
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    padding: 120px;">
+    
+    
+<div class="row">
+  <div class="col-sm-6 d-flex align-items-center">
+  <h1> News & Announcements</h1>
+    <div class="card-transparent border-0" style="padding-left: 100px; float:left">
+      <div class="card-body">
+  
+      </div>
+    </div>
   </div>
+
+  <section id="features" class="features">
+
+<div class="container" data-aos="fade-up">
+
+  <header class="section-header">
+   
+   
+  </header>
+
+
 </div>
 
+<div class="container">
 
-<link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css'>
-<script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
-<script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js'></script>
+
 <script type="text/javascript">
  function loadDoc() {
   
@@ -73,7 +81,7 @@ h1{
  }
  loadDoc();
 </script>
-
+<br><br><br><br><br><br>
 
 <?php 
 include_once("db_conn.php");
@@ -94,12 +102,13 @@ while ($rows = mysqli_fetch_assoc($resultset)) {
     echo "<div class='col-md-6'>";
     echo "<div class='announcement-details'>";
     echo "<h1 class='custom-title'>".$rows['title']."</h1>";
-    echo "<p>".$rows['content']."</p>";
-    
-    // Display date posted
+     // Display date posted
     $dateOrig = $rows['date'];
     $cDate = date("F j, Y", strtotime($dateOrig));
     echo "<p style='color:#001D3D; font-weight: bolder;'>Date Posted: <span class='custom-date'>".$cDate."</span></p>";
+    echo "<p>".$rows['content']."</p>";
+    
+   
 
     
     echo "</div>";
@@ -114,8 +123,14 @@ while ($rows = mysqli_fetch_assoc($resultset)) {
 }
 ?>
 
+    </div>
+</div>
 
 
 
-<html>
-    
+</div>
+
+
+
+
+

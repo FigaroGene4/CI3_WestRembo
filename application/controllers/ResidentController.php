@@ -117,4 +117,12 @@ class ResidentController extends CI_Controller {
        
         
     }
+
+    public function announcement(){
+        //$this->load->view('residents/header-client');
+        $this->load->view('residents/announcement');
+        //$this->load->view('includes/footer');
+       
+        
+    }
 }

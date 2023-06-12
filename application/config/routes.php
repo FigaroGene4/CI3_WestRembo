@@ -80,3 +80,4 @@ $route['forgot'] = 'ResidentController/forgot';
 $route['resetcode'] = 'ResidentController/resetcode';
 $route['newpass'] = 'ResidentController/newpass';
 $route['passchanged'] = 'ResidentController/passwordchanged';
+$route['announce'] = 'ResidentController/announcement';
