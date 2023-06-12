@@ -5,11 +5,11 @@
 	include_once('connection.php');
 
 	if(isset($_GET['id'])){
-		$sql = "UPDATE table_blog SET status = 'archived' WHERE id = '".$_GET["id"]."'";
+		$sql = "UPDATE table_blog SET status = 'active' WHERE id = '".$_GET["id"]."'";
 
 		//use for MySQLi OOP
 		if($conn->query($sql)){
-			$_SESSION['success'] = 'Blog deleted successfully';
+			$_SESSION['success'] = 'Blog Reposted successfully';
 	}
 		////////////////
 
@@ -31,11 +31,3 @@
 ?>
 
 
-<?php
-
-if(isset($_GET['id'])){
-
-}
-
-
-?>

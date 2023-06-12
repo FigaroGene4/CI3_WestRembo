@@ -1,111 +1,210 @@
+
+
 <?php
-// editBlog.php
-
 session_start();
-include('db_conn.php');
-
 if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
-    if (isset($_GET['id'])) {
-        $id = $_GET['id'];
+    include("db_conn.php");
 
-        // Retrieve the blog post from the database
-        $sql = "SELECT * FROM table_blog WHERE id = $id";
-        $result = $conn->query($sql);
+?>
 
-        if ($result->num_rows == 1) {
-            $row = $result->fetch_assoc();
+<?php include 'includes2/header-admin.php';?>
+    <!DOCTYPE html>
+    <html>
 
-            if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-                // Process the form submission
-                $title = $_POST['title'];
-                $content = $_POST['content'];
+    <head>
+        <title>Home</title>
 
-                // Check if a new image file was uploaded
-                if ($_FILES['image']['name'] != '') {
-                    $image = $_FILES['image'];
-                    $imageName = $image['name'];
-                    $imageTmpName = $image['tmp_name'];
-                    $imageError = $image['error'];
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
 
-                    // Handle image upload
-                    if ($imageError === 0) {
-                        $imagePath = 'blogimage/' . $imageName;
-                        move_uploaded_file($imageTmpName, $imagePath);
-                    }
-                } else {
-                    // Use the existing image
-                    $imageName = $row['img'];
-                }
+        <!-- jQuery library -->
+        <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
 
-                // Update the blog post in the database
-                $updateSql = "UPDATE table_blog SET title = '$title', content = '$content', img = '$imageName' WHERE id = $id";
-                $updateResult = $conn->query($updateSql);
+        <!-- Popper JS -->
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
 
-                if ($updateResult) {
-                    $_SESSION['success'] = "Blog post updated successfully.";
-                    header("Location: blog.php");
-                    exit();
-                } else {
-                    $_SESSION['error'] = "Failed to update the blog post.";
-                    header("Location: home.php");
-                    exit();
-                }
-            }
+        <!-- Latest compiled JavaScript -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+        <link rel="icon" type="image/x-icon" href="logo.png">
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-            // Display the edit form
-            ?>
-            <?php include 'includes2/header-admin.php';?>
 
-            <!DOCTYPE html>
-            <html>
-            <head>
-                <title>Edit Blog Post</title>
-                <!-- Include any necessary CSS and JS files here -->
-            </head>
-            <body>
-            <div class="main">
-                <h1>Edit Blog Post</h1>
 
-                <?php
-                if (isset($_SESSION['error'])) {
-                    echo "
-                    <div class='alert alert-danger text-center'>
-                        <button class='close'>&times;</button>
-                        " . $_SESSION['error'] . "
-                    </div>";
-                    unset($_SESSION['error']);
-                }
-                ?>
+    </head>
+    <style>
 
-                <form method="POST" action="" enctype="multipart/form-data">
-                    <label for="title">Title:</label>
-                    <input type="text" name="title" value="<?php echo $row['title']; ?>"><br>
+    .sidebar {
+        width: 250px; 
+        padding: 20px; 
+      }
+    
+      .sidebar a {
+        display: block;
+        margin-bottom: 10px; 
+        text-decoration: none;
+        color: #000;
+        font-size: 16px;
+        line-height: 1.5;
+      }
+    </style>
+    <body>
 
-                    <label for="content">Content:</label>
-                    <textarea name="content"><?php echo $row['content']; ?></textarea><br>
 
-                    <label for="image">Image:</label>
-                    <input type="file" name="image"><br>
+        <div class="main">
+            <div class="container ">
 
-                    <input type="submit" value="Update">
+            <div id="sample">
+  <script type="text/javascript" src="//js.nicedit.com/nicEdit-latest.js"></script> 
+  <script type="text/javascript">
+ 
+        bkLib.onDomLoaded(function() { nicEditors.allTextAreas() });
+  </script>
+           <?php 
+
+           $id = $_GET['id'];
+           include_once('db_conn.php');
+           $sql = "SELECT * FROM table_blog WHERE id = '$id'";
+           $query = $conn->query($sql);
+           while ($row = $query->fetch_assoc()) {
+
+            $title = $row['title'];
+            $content = $row['content'];
+            $img = $row['img'];
+            $category = $row['category'];
+
+           }
+           ?>
+                    
+                <br><br><br><br><br>
+                <h1>Create a post</h1><br>
+
+                <form action="#" method="post" enctype="multipart/form-data">
+
+
+                    <form>
+                        <div class="form-group">
+                            <label for="exampleFormControlInput1">Title</label>
+                            <input type="text" class="form-control" name="title" id="exampleFormControlInput1" placeholder="Blog title here" value="<?=  $title;?>">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleFormControlSelect1">Select category</label>
+                            <select class="form-control" name="category" id="exampleFormControlSelect1" value="<?= $category;?>">
+                                <option>Announcement</option>
+                                <option>General Information</option>
+                                <option>Health</option>
+                                <option>Emergency</option>
+                                <option>Nails</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="exampleFormControlTextarea1">Example textarea</label>
+                            <textarea class="form-control" name="content" id="exampleFormControlTextarea1" rows="3" value=""><?php echo $content;?></textarea>
+                        </div>
+
+                        <div class="field-image">
+
+                            <label for="exampleFormControlFile1">Upload header image</label>
+                            <input type="file" name="image" class="form-control-file" id="exampleFormControlFile1" accept="image/x-png,image/gif,image/jpeg,image/jpg">
+
+
+
+                        </div><br><br>
+
+                        <button type="submit" name="submit" class="btn btn-primary">Update Blog</button>
+                    </form>
+
+
+
+
                 </form>
-            </div>
-            </body>
-            </html>
+<?php
+include("db_conn.php");
+if (isset($_POST['submit'])){
 
-            <?php
-        } else {
-            $_SESSION['error'] = "Blog post not found.";
-            header("Location: home.php");
-            exit();
-        }
-    } else {
-        $_SESSION['error'] = "Invalid blog post ID.";
-        header("Location: home.php");
-        exit();
+   
+
+    if (isset($_FILES['image'])){
+        $title =mysqli_real_escape_string($conn, $_POST['title']);
+        $content  =mysqli_real_escape_string($conn, $_POST['content']);
+        $date = date("Y-m-d");
+        $category =  mysqli_real_escape_string($conn, $_POST['category']);
+
+        $img_name = $_FILES['image']['name'];
+        $img_type = $_FILES['image']['type'];
+        $tmp_name = $_FILES['image']['tmp_name'];
+
+        $img_explode = explode('.', $img_name);
+        $img_ext = end($img_explode);
+
+        $extensions = ["jpeg", "png", "jpg"];
+
+        $types = ["image/jpeg", "image/jpg", "image/png"];
+
+        $time = time();
+        $new_img_name = $time . $img_name;
+        move_uploaded_file($tmp_name, "../admin/blogimage/" . $new_img_name);
+
+
+       
+            $sql = "UPDATE table_blog SET title = '$title',category = '$category', content = '$content', img = '$new_img_name', status = 'active' WHERE id = '$id'";
+            $conn->query($sql);
+        
+
+    
+            
+
+    
+        
+            
+        
+
+        
+
+    
+    
+
+
+
+        $_SESSION['success'] = 'Blog Upated Successfully ' ;
     }
+}
+
+
+
+?>
+
+<br>
+                <h1> <?php if (isset($_SESSION['success'])) {
+            echo
+            "
+            <div class='alert alert-success text-center'>
+               
+                " . $_SESSION['success'] . "
+                
+            </div>
+            ";
+            unset($_SESSION['success']);
+        } ?> </h1>
+            </div>
+        </div>
+
+
+
+
+
+
+    </body>
+
+    </html>
+
+<?php
 } else {
     header("Location: index.php");
     exit();
 }
 ?>
+
+
+
+

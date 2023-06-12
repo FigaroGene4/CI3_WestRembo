@@ -92,10 +92,10 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
                 <div class="container">
                 <ul class="nav nav-tabs">
           <li class="nav-item">
-            <a class="nav-link active" href="blog.php">Posted articles</a>
+            <a class="nav-link " href="blog.php">Posted articles</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link custom-tab" href="archives.php">Archives</a>
+            <a class="nav-link active custom-tab" href="archives.php">Archives</a>
           </li>
         </ul>
                 </div>
@@ -152,7 +152,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
                             <tbody>
                                 <?php
                                 include_once('db_conn.php');
-                                $sql = "SELECT * FROM table_blog WHERE status = 'active'";
+                                $sql = "SELECT * FROM table_blog WHERE status = 'archived'";
                                 $query = $conn->query($sql);
                                 while ($row = $query->fetch_assoc()) {
                                     $imagePath = 'blogimage/' . $row['img'];
@@ -175,8 +175,8 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 
                                         <span class='glyphicon glyphicon-trash'></span> Edit
                                             </a>
-                                            <a href='#delete_" . $row['id'] . "' class='buttonz btn btn-danger btn-sm' data-toggle='modal'>
-                                                <span class='glyphicon glyphicon-trash'></span> Archive
+                                            <a href='#repost_" . $row['id'] . "' class='buttonz btn btn-success btn-sm' data-toggle='modal'>
+                                                <span class='glyphicon glyphicon-trash'></span> Repost
                                             </a>
                                         </td>
                                     </tr>";

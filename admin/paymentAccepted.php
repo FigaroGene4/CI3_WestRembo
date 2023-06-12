@@ -1,10 +1,12 @@
 <?php
 session_start();
 
-if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
+
+if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
     include("db_conn.php");
 
 ?>
+ <?php include 'includes2/header-admin.php';?>
     <!DOCTYPE html>
     <html>
 
@@ -28,75 +30,16 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
 
 
     </head>
+    <style>
+     
+    </style>
 
     <body>
-
-
-
-        <nav class="navbar navbar-light bg-light fixed-top ">
-            <style>
-                a {
-                    color: black;
-                }
-
-                a:hover {
-                    color: violet;
-                }
-
-                .dropdown-menu {
-                    padding: 15px;
-
-                }
-
-                .content_td p {
-                    max-width: 100%;
-                    max-height: 100px;
-                    overflow-y: scroll;
-                    text-overflow: ellipsis;
-                }
-                .nav-tabs{
-                    width: 80%;
-                }
-            </style>
-
-            <a class="navbar-brand" href="home.php" style="padding-left: 10px;"> <img src="logowr.png" width="20px"> </a>
-            <a class="navbar-brand">Hello, <?php echo $_SESSION['name']; ?></a>
-            <a class="navbar-brand navbar-right .active   " href="createadmin.php"></a>
-            <a class="navbar-brand navbar-right  " href="changepassword.php"> </a>
-            <a class="navbar-brand navbar-right  " href="logout.php" style="margin-left: auto"></a>
-            <div class="dropdown droptxt">
-                <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Admin Settings
-                    <span class="caret"></span></button>
-                <ul class="dropdown-menu droptxt">
-                    <li><a href="createadmin.php">Create Admin Account</a></li>
-                    <li><a href="changepassword.php">Reset Password</a></li>
-                    <div class="dropdown-divider"></div>
-                    <li><a href="logout.php">Logout</a></li>
-            </div>
-            </ul>
-            </div>
-        </nav>
-
-        <div class="sidebar">
-<br><br><br><br>
-
-<a href="residents.php ">Residents</a>
-<!--<a href="artist.php">Artist</a> -->
-<a href="docrequest.php">Document Requests</a>
-<a href="payment.php">Payment</a>
-<a href="pricing.php">Pricing</a>
-<a href="report.php">Reports</a>
-<!--<a href="refund.php">Refund</a>
-<a href="payartist.php">Pay Artist</a> -->
-<a href="Blog.php">CMS</a>
-</div>
-
         <br><br><br><br><br>
         <div class="main">
-            
-            
+
+
             <div class="container ">
-            <ul class="nav nav-tabs">
             <ul class="nav nav-tabs">
                     <li class="nav-item">
                         <a class="nav-link " href="payment.php">Pending</a>
@@ -105,11 +48,9 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
                         <a class="nav-link active" href="paymentAccepted.php">Accepted</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="paymentreturn.php">Declined</a>
+                        <a class="nav-link" href="pricing.php">Adjust Pricing</a>
                     </li>
                 </ul>
-  
-
                 <div class="row">
                     <div class="col-12">
 
@@ -125,14 +66,14 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
 
                             <table id="myTable" class="table text-center table-striped">
                                 <thead class="thead-dark">
-                                   
-                                    <th>Client Email</th>
-                                    <th>Artist Email</th>
-                                    <th>GCASH Reference Number</th>
-                                    <th>Transaction Number </th>
-                                    <th>Amount</th>
+
+                                <th>Client Name</th>
+                                    <th>Document ID</th>
+                                    <th>Document Type </th>
+                                    <th>Price</th>
                                     <th>Date</th>
-                                    <th>Status</th>
+                                    
+                                    
                                     <th>Action</th>
 
 
@@ -145,42 +86,53 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
 
 
                                     include_once('db_conn.php');
-                                    $sql = "SELECT * FROM table_payment WHERE status = 'Done' ORDER BY status DESC ";
+
+
+                                    $sql = "SELECT * FROM table_documentrequest  WHERE status ='Payment Approved' OR status = 'Printed'";
 
 
                                     //use for MySQLi-OOP
                                     $query = $conn->query($sql);
                                     while ($row = $query->fetch_assoc()) {
+                                        if ($row == false) {
+
+                                            echo "<h1>" . 'No pending payments yet' . "</h1>";
+                                        }
+                                        
+                                        else{
+
+
                                         $ddate = $row['date'];
                                         $newDate = date("F d, Y", strtotime($ddate));
-                                        echo
-                                        "<tr>
-                           
-                            <td>" . $row['clientemail'] . "</td>
-                            <td>" . $row['artistemail'] . "</td>
-                            <td>" . $row['referenceNumber'] . "  </td>
-                            <td>" . $row['trackingNumber'] . "</td>
-                            <td>₱" . $row['amount'] . "</td>
-                            <td>" . $newDate . "</td>
-                            <td>" . $row['status'] . "</td>";
+                                            echo
+                                                "<tr>
+                        
+                            <td>" . $row['firstName'] . ' ' . $row['lastName'] . "</td>
+                            
+                            <td>" . $row['transactionNumber'] . "  </td>
+                            <td>" . $row['category'] . "</td>
+                            <td>₱" . $row['price'] . "</td>
+                            <td>" . $newDate . "</td>";
+                            
+                            
                                         $status = $row['status'];
                                         $_SESSION_['id'] = $row['id'];
-                                        $_SESSION['transactionNumber'] = $row['trackingNumber'];
-                                        if ($status == 'Pending') {
+                                        
+                                        if ($status == 'For Payment' ) {
                                             echo "   <td>
                                 <a href='#edit_" . $row['id'] . "' class='btn btn-info btn-sm' data-toggle='modal'><span class='glyphicon glyphicon-edit'></span> Accept</a>
-                                <a href='#delete_" . $row['id'] . "' class='btn btn-danger btn-sm' data-toggle='modal'><span class='glyphicon glyphicon-trash'></span> Decline</a>
+                                <a href='#delete_".$row['id']."' class='btn btn-danger btn-sm buttonz' data-toggle='modal'><span class='glyphicon glyphicon-trash'></span>Return</a>
                             </td>
     </tr>";
                                         } else {
                                             echo "   <td>
                         <a href='#edit_" . $row['id'] . "' class='btn btn-info btn-sm  disabled' data-toggle='modal'><span class='glyphicon glyphicon-edit'></span> Accept</a>
-                        <a href='#delete_" . $row['id'] . "' class='btn btn-danger btn-sm  disabled' data-toggle='modal'><span class='glyphicon glyphicon-trash'></span> Decline</a>
+                        <a href='#delete_" . $row['id'] . "' class='btn btn-danger btn-sm  disabled' data-toggle='modal'><span class='glyphicon glyphicon-trash'></span> Return</a>
                     </td>
 </tr>";
                                         }
                                         include('paymentModal.php');
-                                    }
+                                    }}
                                     /////////////////
 
                                     //use for MySQLi Procedural
