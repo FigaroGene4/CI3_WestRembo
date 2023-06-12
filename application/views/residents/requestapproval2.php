@@ -255,7 +255,7 @@ if($email != false && $password != false){
                         <form>
                             <div class="row">
                                 <div class="col-md-6 mb-3">
-                                <a href="requestdocumentdetails.php?category=bid">
+                                <a href="<?php echo base_url('request?category=bid')?>">
                                   <div class="container-fluid d-flex flex-column justify-content-center align-items-center" style="width: 100%; height: 150px; background-color: #7F99B2;">
                                           <img src="../wrp-assets/card.png" alt="Image" style="max-width: 100%; max-height: 50%;">
                                           <div class="mt-2">Barangay ID</div>
@@ -264,17 +264,17 @@ if($email != false && $password != false){
                                 </a>
                                 </div>
                                 <div class="col-md-6 mb-3">
-                                <a href="requestdocumentdetails.php?category=bc">
+                                <a href="<?php echo base_url('request?category=bc')?>" >
                                   <div class="container-fluid d-flex flex-column justify-content-center align-items-center" style="width: 100%; height: 150px; background-color: #FFE799;">
                                         <img src="../wrp-assets/documentation.png" alt="Image" style="max-width: 100%; max-height: 50%;">
-                                        <div class="mt-2">Clerance</div>
+                                        <div class="mt-2">Clearance</div>
                                     </div>
                                 </a>
                                 </div>
 
                             <div class="row">
                                 <div class="col-md-6 mb-3">
-                                <a href="requestdocumentdetails.php?category=bp">
+                                <a href="<?php echo base_url('request?category=bp')?>">
                                   <div class="container-fluid d-flex flex-column justify-content-center align-items-center" style="width: 100%; height: 150px; background-color: #FFE799;">
                                               <img src="../wrp-assets/business.png" alt="Image" style="max-width: 100%; max-height: 50%;">
                                               <div class="mt-2">Business permit</div>
@@ -282,10 +282,10 @@ if($email != false && $password != false){
                                 </a>
                                 </div>
                                     <div class="col-md-6 mb-3">
-                                    <a href="requestdocumentdetails.php?category=bldg">
+                                    <a href="<?php echo base_url('request?category=bldg')?>">
                                       <div class="container-fluid d-flex flex-column justify-content-center align-items-center" style="width: 100%; height: 150px; background-color: #7F99B2;">
                                               <img src="../wrp-assets/building.png" alt="Image" style="max-width: 100%; max-height: 50%;">
-                                              <div class="mt-2">Barangay Indigency </div>
+                                              <div class="mt-2">Building Permit </div>
                                           </div>
                                       </a>
                                     </div>
