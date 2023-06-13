@@ -9,7 +9,7 @@
 
 		//use for MySQLi OOP
 		if($conn->query($sql)){
-			$_SESSION['success'] = 'Blog deleted successfully';
+			$_SESSION['success'] = 'Blog archived successfully';
 	}
 		////////////////
 

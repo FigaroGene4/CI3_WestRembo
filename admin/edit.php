@@ -2,7 +2,7 @@
 session_start();
 include_once('connection.php');
 
-if (isset($_POST['submitbtn'])) {
+if (isset($_GET['id'])) {
     $id_client = $_POST['id'];
     $firstNameClient = $_POST['firstName'];
     $lastNameClient = $_POST['lastName'];

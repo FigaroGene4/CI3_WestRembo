@@ -128,12 +128,12 @@ session_start();
                                 <th style="background-color: #001D3D;">Review</th>
                                 <th style="background-color: #001D3D;">Rating</th>
                                 <th style="background-color: #001D3D;">Sentiment</th>
-                                <th style="background-color: #001D3D;">ACTION</th>
+                                
                             </thead>
                             <tbody>
                             <?php
                                     include_once('db_conn.php');
-                                    $sql = "SELECT * FROM table_documentrequest";
+                                    $sql = "SELECT * FROM table_documentrequest WHERE sentiment = 'negative' OR sentiment = 'positive'";
                                     $query = $conn->query($sql);
 
                                     while ($row = $query->fetch_assoc()) {
@@ -148,13 +148,7 @@ session_start();
                                         <td>" . getSentimentImage($row['rate']) . "</td>
                                         <td>" . $row['sentiment'] . "</td>
 
-                                            <td>
-                                
-                                                </a>
-                                                <a href='#arch_" . $row['id'] . "' class='buttonz btn btn-success btn-sm' data-toggle='modal'>
-                                                    <span class='glyphicon glyphicon-trash'></span> Archive
-                                                </a>
-                                            </td>
+                                            
                                            
                                         </tr>";
                                         include('archfeedbackmodal.php');
