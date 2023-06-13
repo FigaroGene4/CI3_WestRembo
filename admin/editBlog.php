@@ -33,19 +33,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
     </head>
     <style>
 
-    .sidebar {
-        width: 250px; 
-        padding: 20px; 
-      }
     
-      .sidebar a {
-        display: block;
-        margin-bottom: 10px; 
-        text-decoration: none;
-        color: #000;
-        font-size: 16px;
-        line-height: 1.5;
-      }
     </style>
     <body>
 
@@ -76,7 +64,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
            ?>
                     
                 <br><br><br><br><br>
-                <h1>Create a post</h1><br>
+                <h1>Edit Annoucement</h1><br>
 
                 <form action="#" method="post" enctype="multipart/form-data">
 
