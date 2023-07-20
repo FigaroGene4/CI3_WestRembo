@@ -6,6 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>West Rembo</title>
         <link rel="stylesheet" href="css/style.css"/>
+        
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     </head>
 
@@ -34,7 +35,7 @@
     <!---navbar--->
 <body>
 
-<nav class="navbar navbar-expand-lg py-3 fixed-top">
+<nav class="navbar navbar-expand-lg py-3 fixed-top ">
       <div class="container">
       <a href="#" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
       <img src="../wrp-assets/logo-white1.png" style="width: 150px; height: 50px;">

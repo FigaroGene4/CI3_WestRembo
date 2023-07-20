@@ -37,6 +37,7 @@ class ResidentController extends CI_Controller {
 
 
     public function welcome(){
+        
         $this->load->view('residents/home'); 
     }
 
@@ -53,7 +54,7 @@ class ResidentController extends CI_Controller {
     }
 
     public function profile(){
-        $this->load->view('residents/header-client');
+       
         $this->load->view('residents/profile');
       
         
@@ -95,17 +96,25 @@ class ResidentController extends CI_Controller {
     }
 
     public function request(){
-        $this->load->view('residents/includes/header-process');
+        
         $this->load->view('residents/requestdocumentdetails');
-        $this->load->view('includes/footer');
+       
+       
+        
+    }
+
+    public function requestOther(){
+        
+        $this->load->view('residents/requestother');
+      
        
         
     }
 
     public function requestSent(){
-        $this->load->view('residents/includes/header-process');
+    
         $this->load->view('residents/requestapproval2');
-        $this->load->view('includes/footer');
+       
        
         
     }

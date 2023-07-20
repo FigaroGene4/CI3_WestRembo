@@ -73,6 +73,7 @@ $route['otp'] = 'ResidentController/otp';
 $route['verify'] = 'ResidentController/verify';
 $route['pendingverify'] = 'ResidentController/pendingverify';
 $route['request'] = 'ResidentController/request';
+$route['requestOther'] = 'ResidentController/requestOther';
 $route['requestSent'] = 'ResidentController/requestSent';
 
 $route['rate'] = 'ResidentController/rate';

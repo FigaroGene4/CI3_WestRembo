@@ -31,14 +31,14 @@
  font-size: 15px;
 }
 .container .form form .button{
-  background: #6665ee;
+  background: #001D3D;
   color: #fff;
   font-size: 17px;
   font-weight: 500;
   transition: all 0.3s ease;
 }
 .container .form form .button:hover{
-  background: #5757d1;
+  background: #012970;
 }
 .container .form form .link{
   padding: 30px 0;
@@ -331,7 +331,7 @@ section {
 * Mobile Navigation 
 */
 .mobile-nav-toggle {
-  color: #012970;
+  color: white;
   font-size: 28px;
   cursor: pointer;
   display: none;
@@ -375,7 +375,7 @@ section {
   left: 15px;
   padding: 10px 0;
   border-radius: 10px;
-  background-color: #fff;
+  background-color: #001D3D;
   overflow-y: auto;
   transition: 0.3s;
 }

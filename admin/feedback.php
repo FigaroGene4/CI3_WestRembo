@@ -76,48 +76,10 @@ session_start();
         <br><br><br><br>
     
 <div class="main">
-    <div class="container">
-        <div class="row">
-            <div class="col-12">
-                <br><br>
-                <div class="row">
-    <div class="col-md-6">
-        <div class="column">
-            <div class="head">
-                <h1 class="page-header text-left custom-heading">Feedbacks</h1>
-            </div>
-        </div>
-    </div>
    
-</div>
+                <h1 class="page-header text-left custom-heading">Feedbacks</h1>
 
-               
-
-
-
-               
-            </div>
-            <?php
-            if (isset($_SESSION['error'])) {
-                echo "
-                <div class='alert alert-danger text-center'>
-                    <button class='close'>&times;</button>
-                    " . $_SESSION['error'] . "
-                </div>";
-                unset($_SESSION['error']);
-            }
-            if (isset($_SESSION['success'])) {
-                echo "
-                <div class='alert alert-success text-center'>
-                    <button class='close'>&times;</button>
-                    " . $_SESSION['success'] . "
-                </div>";
-                unset($_SESSION['success']);
-            }
-            ?>
-            <form method="POST" action="editBlog.php?id=<?php echo $row['id']; ?>">
-
-                <div class="col-md-12">
+                <div class="col">
                 <div class="table-responsive">
                     <div class="height10">
                         <table id="myTable" class="table text-left table-striped table-bordered">
@@ -127,7 +89,7 @@ session_start();
                                 <th style="background-color: #001D3D;">Category</th>
                                 <th style="background-color: #001D3D;">Review</th>
                                 <th style="background-color: #001D3D;">Rating</th>
-                                <th style="background-color: #001D3D;">Sentiment</th>
+                               <!-- <th style="background-color: #001D3D;">Sentiment</th> -->
                                 
                             </thead>
                             <tbody>
@@ -146,7 +108,7 @@ session_start();
                                         <td>" . $row['category'] . "</td>
                                         <td>" . $row['review'] . "</td>
                                         <td>" . getSentimentImage($row['rate']) . "</td>
-                                        <td>" . $row['sentiment'] . "</td>
+                                       
 
                                             
                                            
@@ -177,19 +139,17 @@ session_start();
                                             
                                             }
                                         }
-
-                                        // Usage example:
-                                        
                                         ?>
-
-                            </table>
-                        </div>
-                    </div>
-                </div>
-         </div>
-        </div>
-    </div>
+       
 </div>
+
+               
+
+
+
+               
+           
+                
 
 
     </body>
@@ -203,9 +163,7 @@ session_start();
         <!-- generate datatable on our table -->
         <script>
           $(document).ready(function() {
-            //inialize datatable
-            $('#myTable').DataTable();
-
+           
             //hide alert
            $(document).on('click', '.close', function() {
               $('.alert').hide();

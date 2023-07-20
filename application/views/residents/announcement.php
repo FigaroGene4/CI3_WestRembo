@@ -39,127 +39,89 @@ if($email != false && $password != false){
 <html lang="en">
 
 
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-<head>
-<link rel="stylesheet" href="css1/owl.carousel.min.css">
-    <link rel="stylesheet" href="css1/owl.theme.default.min.css">
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/4.5.6/css/ionicons.min.css">
-		<link rel="stylesheet" href="css1/style.css">
-
-
-  <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
-
-  <title> Welcome to West Rembo</title>
-  <meta content="" name="description">
-
-  <meta content="" name="keywords">
-
-  <!-- Favicons -->
-  <link href="" rel="icon">
-  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
-
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
-
-  <!-- Vendor CSS Files -->
-  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-  <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
-  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0/css/bootstrap.min.css">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
- 
-
-
- 
- 
-  
-
-  <!-- Template Main CSS File -->
-  <link href="assets/css/style.css" rel="stylesheet">
-
-  <!-- =======================================================
-  * Template Name: FlexStart - v1.9.0
-  * Template URL: https://bootstrapmade.com/flexstart-bootstrap-startup-template/
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
-</head>
 <style>
-  body::before {
-  display: block;
-  content: '';
-  height: 60px;
+    @font-face{
+    src: url(css/fonts/WorkSans-Regular.ttf);
 }
+h1{
 
-.navbar {
-  background-color: #001D3D;
+color: #000814;
+font-family: 'Work Sans', sans-serif;
+font-style: normal;
+font-weight: 700;
 }
-
-.navbar-dark .navbar-nav .nav-link {
-  color: white;
+.card-text{
+    font-family: 'Work Sans', sans-serif;
+    font-style: normal;
+    font-weight: 400;
 }
-
-#learn{
-  
-  border-radius: 20px;
-  background-color: #FFC300;
+h3{
+    font-family: 'Work Sans', sans-serif;
+    font-style: normal;
+    font-weight: 700;
 }
-
-#map {
-  width: 100%;
-  height: 100%;
-  border-radius: 10px;
-}
-
-@media (min-width: 768px) {
-  .news-input {
-    width: 50%;
-  }
-}
-
-.smaller-image {
-  max-width: 60%;
-  padding: 0 auto; 
-}
-
-.no-margin {
-  margin: 0;
-}
-
-@media (min-width: 1200px) {
-  #learn.custom-margin {
-    margin: 50px;
-  }
-}
-
-.btn-primary {
-  background-color: #001D3D;
-  color: #ffffff;
-  border-radius: 10px;
-
-}
-
-.btn-primary:hover {
-
-  background-color: #001D3D;
-}
-
-.mt-2{
-  color: #001D3D;
-  font-weight: bold;
+p{
+    font-weight: 500;
 }
 
 
+@media (max-width: 3000px) {
+
+.paddingPC{
+  background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    padding: 120px;
+}
+.imgsz{
+  width: 600px;
+}
+}
+
+@media (max-width: 500px) {
+
+.paddingPC{
+padding-left: 10px;
+
+}
+
+
+
+.imgsz{
+  width: 320px;
+}
+}
 </style>
 
-<body>
+<!--<div class="container" style="background-image: url('wrp-assets/footer-bg.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    padding: 120px;">-->
+   <div class="container">
+    
+    
+<div class="container">
+ 
+  <h1> News & Announcements</h1> <br><br>
+   
+  </div>
+
+  
+
+<div class="container" data-aos="fade-up">
+
+  
 
 
-<script type="text/javascript">
+</div>
+
+<div class="container">
+
+
+<script type="text/javascript">/*
  function loadDoc() {
   
 
@@ -178,20 +140,20 @@ if($email != false && $password != false){
  }
  loadDoc();
 </script>
-<br><br><br><br><br><br>
+
 
 <?php 
 include_once("db_conn.php");
-$sql = "SELECT * FROM table_blog ORDER BY id DESC";
+$sql = "SELECT * FROM table_blog WHERE status = 'active' ORDER BY id DESC";
 $resultset = mysqli_query($conn, $sql) or die("database error:". mysqli_error($conn));
 while ($rows = mysqli_fetch_assoc($resultset)) {
     echo "<div class='container'>";
     echo "<div class='row'>";
     
     // Display image in column 1
-    echo "<div class='col-md-6'>";
+    echo "<div class='col'>";
     echo "<div class='announcement-image'>";
-    echo "<a href='blogpost.php?id=".$rows['id']."'><img src='admin/blogimage/".$rows['img']."' alt='1.jpg' class='img-responsive' style='width: 600px; height: 400px; border-radius: 20px;'></a>";
+    echo "<img class='imgsz'src='admin/blogimage/".$rows['img']."' alt='1.jpg' class='img-responsive' style='  border-radius: 20px;'></a>";
     echo "</div>";
     echo "</div>";
     
@@ -220,11 +182,9 @@ while ($rows = mysqli_fetch_assoc($resultset)) {
 }
 ?>
 
+    </div>
+</div>
 
 
-   
-</body>
 
-</html>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
-
+</div>

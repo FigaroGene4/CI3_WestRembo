@@ -1,3 +1,6 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+
+
 <?php
 ob_start();
 
@@ -193,4 +196,82 @@ $conn->query($sql);
     $pdf->Output('I', $transactionNumber . '.pdf');
 
     echo $category;
+}
+
+
+else{
+    $sql = "SELECT * FROM table_documentrequest WHERE transactionNumber = '$transactionNumber'";
+    $result = mysqli_query($conn, $sql);
+    if (mysqli_num_rows($result) > 0) {
+        // output data of each row
+        while ($row = mysqli_fetch_assoc($result)) {
+            $name = $row['firstName'] . ' '. $row['lastName'];
+            $category = $row['category'];
+            $referenceNumber = $row['transactionNumber'];
+            $email = $row['email'];
+
+            $birthplace = $row['birthplace'];
+            $period = $row['period'];
+            $voter = $row['voter'];
+            $owner = $row['owner'];
+            $relation = $row['relation'];
+
+            
+            
+
+        }
+    }
+
+    $sql = "SELECT * FROM table_residents WHERE email = '$email'";
+    $result = mysqli_query($conn, $sql);
+    if (mysqli_num_rows($result) > 0) {
+        // output data of each row
+        while ($row = mysqli_fetch_assoc($result)) {
+            $dob = $row['birthdate'];
+            $address = $row['houseNumber'] . ' '. $row['streetNumber'] .' ' .$row['sitio'] ;
+         
+
+        }
+    }
+       
+       
+
+
+
+
+
+
+    
+    $sql = "UPDATE table_documentrequest SET status = 'Printed' WHERE transactionNumber = '$transactionNumber'";
+$conn->query($sql);
+
+echo '<div class="container">
+<h1>Request Information</h1>
+<div class="card">
+  <div class="card-body">
+    <h5 class="card-title">Document Transaction Number: '.$transactionNumber.'</h5><hr>
+
+    <h4><i class="card-text">Personal Info:</i></h4><br>
+    <p class="card-text"><b>Name:</b> ' .$name.' </p>
+    <p class="card-text"><b>Date of birth:</b>  '.$dob.' </p>
+    <p class="card-text"><b>Address:</b>  '.$address.'</p><hr>
+    <h4><i class="card-text">Requested Document:</i> '.$category.'</h4><br>
+
+    <p class="card-text"><b>Birthplace:</b> ' .$birthplace.' </p>
+    <p class="card-text"><b>Time of residency:</b>  '.$period.' </p>
+    <p class="card-text"><b>Makati City Voter?:</b>  '.$voter.'</p>
+    <p class="card-text"><b>Name of House Owner:</b>  '.$owner.'</p>
+    <p class="card-text"><b>Relation to House Owner:</b>  '.$relation.'</p>
+
+ 
+  </div>
+</div><br>
+<a href="residentsdh.php?email='.$email.'" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Return</a>
+</div>
+
+'
+
+;
+
+
 }

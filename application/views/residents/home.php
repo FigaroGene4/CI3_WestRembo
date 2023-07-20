@@ -41,10 +41,7 @@ if($email != false && $password != false){
 
 
 <head>
-<link rel="stylesheet" href="css1/owl.carousel.min.css">
-    <link rel="stylesheet" href="css1/owl.theme.default.min.css">
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/4.5.6/css/ionicons.min.css">
-		<link rel="stylesheet" href="css1/style.css">
+
 
 
   <meta charset="utf-8">
@@ -63,20 +60,13 @@ if($email != false && $password != false){
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
   <!-- Vendor CSS Files -->
-  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+   <!-- Vendor CSS Files -->
+   <link href="assets/vendor/aos/aos.css" rel="stylesheet">
   <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
   <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
   <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
   <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0/css/bootstrap.min.css">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
- 
-
-
- 
- 
-  
 
   <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
@@ -96,7 +86,7 @@ if($email != false && $password != false){
 }
 
 .navbar {
-  background-color: #001D3D;
+ 
 }
 
 .navbar-dark .navbar-nav .nav-link {
@@ -257,7 +247,7 @@ if($email != false && $password != false){
                                         <div class="mt-2">Clearance</div>
                                     </div>
                                 </a>
-                                </div>
+                                </div></div>
 
                             <div class="row">
                                 <div class="col-md-6 mb-3">
@@ -269,10 +259,10 @@ if($email != false && $password != false){
                                 </a>
                                 </div>
                                     <div class="col-md-6 mb-3">
-                                    <a href="<?php echo base_url('request?category=bldg')?>">
+                                    <a href="<?php echo base_url('requestOther')?>">
                                       <div class="container-fluid d-flex flex-column justify-content-center align-items-center" style="width: 100%; height: 150px; background-color: #7F99B2;">
                                               <img src="../wrp-assets/building.png" alt="Image" style="max-width: 100%; max-height: 50%;">
-                                              <div class="mt-2">Building Permit </div>
+                                              <div class="mt-2">Other Barangay Certificates </div>
                                           </div>
                                       </a>
                                     </div>
@@ -293,5 +283,5 @@ if($email != false && $password != false){
 </body>
 
 </html>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
 
+ 

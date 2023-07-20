@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+
 
 <style>
 	@media (min-width: 768px) {
@@ -39,7 +39,7 @@
 					<div class="row">
 						
 						<div class="col-md-12 text-center">
-						<h4 class="modal-title" id="myModalLabel" style="text-align: center; color: #fff;">Resident Infozxs</h4>
+						<h4 class="modal-title" id="myModalLabel" style="text-align: center; color: #fff;">Resident Info</h4>
 						
 						</div>
 					</div>
@@ -385,10 +385,14 @@
 				<p class="text-center">Are you sure you want to Accept?</p>
 				<h2 class="text-center"><?php echo $row['firstName'] . ' ' . $row['lastName']; ?></h2>
 			</div>
+
+			
 			<div class="modal-footer">
 				<button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancel</button>
 				<a href="accept.php?id=<?php echo $row['id']; ?> " class="btn btn-success"><span class="glyphicon glyphicon-trash"></span> Yes</a>
 			</div>
+
+			
 
 		</div>
 	</div>
@@ -408,12 +412,32 @@
 			<div class="modal-body">
 				<p class="text-center">Are you sure you want to Accept Document Request:</p>
 				<h2 class="text-center"><?php echo $row['transactionNumber'] . ' | ' . $row['category']; ?></h2>
+				<br><br>
+				
+
+<form action="acceptDoc.php?id=<?php echo $row['id']; ?>" method="post">
+<label class="text-center">Select date of appointment:</label>
+<input type="date" id="datepicker" name="datepick" width="500" placeholder="Select date of appointment to barangay" required />
+          
 			</div>
+			
+			
+
+			
 			<div class="modal-footer">
 				<button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancel</button>
-				<a href="acceptDoc.php?id=<?php echo $row['id']; ?> " class="btn btn-success"><span class="glyphicon glyphicon-trash"></span> Yes</a>
+				<button class="btn btn-success" name="approvedoc" type="submit">Yes</button></form>
 			</div>
-
+			
 		</div>
+		
 	</div>
 </div>
+
+
+
+<?php
+
+
+?>
+

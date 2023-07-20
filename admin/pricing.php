@@ -60,19 +60,28 @@ if(isset($_POST['apply'])){
     $bid = $_POST['bid'];
     $bc = $_POST['bc'];
     $bsp = $_POST['bsp'];
-    $bp = $_POST['bp'];
+    $yellow = $_POST['yellow'];
+    $senior = $_POST['senior'];
+    $pwd = $_POST['pwd'];
+    $pvao = $_POST['pvao']; 
+    $bona = $_POST['bona'];
+    $goodmoral = $_POST['goodmoral'];
+    $marriage = $_POST['marriage'];
+    $nodero = $_POST['nodero'];
+    $indigency = $_POST['indigency'];
+    $livein = $_POST['livein'];
+    $scholarship = $_POST['scholarship'];
+    $greencard = $_POST['greencard'];
     
 
-    
 
 
-
-    $sql1 = "UPDATE table_pricing SET  baranggayId = '$bid', baranggayClearance = '$bc', businessPermit = '$bsp', buildingPermit = '$bp' where id = '1'";
+    $sql1 = "UPDATE table_pricing SET  baranggayId = '$bid', baranggayClearance = '$bc', businessPermit = '$bsp', yellow = '$yellow', senior = '$senior', pwd = '$pwd', pvao = '$pvao', bona = '$bona', goodmoral = '$goodmoral', marriage = '$marriage', nodero = '$nodero', indigency = '$indigency', livein = '$livein', scholarship = '$scholarship', greencard ='$greencard' where id = '1'";
 
     $conn->query($sql1);
     
    
-
+    $_SESSION['done'] = 'Pricing changed successfully';
 }
 
 
@@ -112,8 +121,45 @@ while($row = $query->fetch_assoc()){
     <label for="">Business Permit:</label>
     <input type="number" name="bsp" class="form-control" placeholder="" id="email" value='.$row['businessPermit'].'>
  
-    <label for="">Building Permit:</label>
-    <input type="number" name="bp" class="form-control" placeholder="" id="email" value='.$row['buildingPermit'].'>
+    <label for="">Yellow Card and Philhealth Application:</label>
+    <input type="number" name="yellow" class="form-control" placeholder="" id="email" value='.$row['yellow'].'>
+
+    <label for="">Senior Citizens Card (White, Blue, Yellow & Philhealth):</label>
+    <input type="number" name="senior" class="form-control" placeholder="" id="email" value='.$row['senior'].'>
+    
+    <label for="">PWDs Benefit Cards (Philhealth, Yellow):</label>
+    <input type="number" name="pwd" class="form-control" placeholder="" id="email" value='.$row['pwd'].'>
+
+    <label for="">PVAO Application:</label>
+    <input type="number" name="pvao" class="form-control" placeholder="" id="email" value='.$row['pvao'].'>
+
+    <label for="">Bonafide Residency:</label>
+    <input type="number" name="bona" class="form-control" placeholder="" id="email" value='.$row['bona'].'>
+
+    <label for="">Good Moral Character</label>
+    <input type="number" name="goodmoral" class="form-control" placeholder="" id="email" value='.$row['goodmoral'].'>
+
+    <label for="">Marriage License:</label>
+    <input type="number" name="marriage" class="form-control" placeholder="" id="email" value='.$row['marriage'].'>
+
+    <label for="">No Derogatory Record:</label>
+    <input type="number" name="nodero" class="form-control" placeholder="" id="email" value='.$row['nodero'].'>
+
+    <label for="">Indigency:</label>
+    <input type="number" name="indigency" class="form-control" placeholder="" id="email" value='.$row['indigency'].'>
+
+    <label for="">Live-in/Solo Parent:</label>
+    <input type="number" name="livein" class="form-control" placeholder="" id="email" value='.$row['livein'].'>
+
+    <label for="">Scholarship/ UMAK Consortia:</label>
+    <input type="number" name="scholarship" class="form-control" placeholder="" id="email" value='.$row['scholarship'].'>
+
+    <label for="">Green Card:</label>
+    <input type="number" name="greencard" class="form-control" placeholder="" id="email" value='.$row['greencard'].'>
+
+    
+
+
 
    <br<br><br><hr><br><br>
 

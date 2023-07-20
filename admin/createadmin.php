@@ -5,7 +5,19 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
  include ("db_conn.php"); 
 
  ?>
+ <?php include 'includes2/header-admin.php';?>
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Home</title>
 
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+
+<!-- Popper JS -->
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
 <?php
 	
 	include_once('connection.php');
@@ -55,34 +67,33 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 ?>
  
 
- 
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Home</title>
 
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
-
-<!-- jQuery library -->
-<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
-
-<!-- Popper JS -->
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
 
 <!-- Latest compiled JavaScript -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
-  <link rel="icon" type="image/x-icon" href="logo.png">   
+  <link rel="icon" type="image/x-icon" href="logowr.png">   
   <link rel="stylesheet" type="text/css" href="style.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Work+Sans&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
   <meta name="viewport" content="width=device-width, initial-scale=1"> 
 
+
+  
 </head>
-<body>
-
-
- 
-
-<nav class="navbar navbar-light bg-light fixed-top ">
-  <style>
+<style>
     
     a{
       color: black;
@@ -96,43 +107,45 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
       padding: 15px;
       
     }
+
+
+.custom-heading {
+    color: #001D3D;
+    font-size: 20px;
+ 
+    font-weight:  bolder;
+    
+  }
+
+  .navbar{
+    background-color: white;
+  }
+
+  .stlabel{
+    padding-top: 30px;
+    padding-bottom: 30px;
+    font-weight: bold;
+    color: #001D3D;
+  }
+
+  .dslabel2{
+    color: #001D3D;
+    font-size: 20px;
+ 
+    font-weight:  bolder;
+  }
+  
   </style>
-        
-            <a class="navbar-brand" href="home.php" style="padding-left: 10px;"> <img src="logowr.png" width="20px"> </a>
-            <a class="navbar-brand">Hello, <?php echo $_SESSION['name']; ?></a>
-            <a class="navbar-brand navbar-right .active   " href="createadmin.php" ></a>
-            <a class="navbar-brand navbar-right  " href="changepassword.php" > </a>
-            <a class="navbar-brand navbar-right  " href="logout.php" style= "margin-left: auto"></a>
-            <div class="dropdown droptxt">
-  <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Admin Settings
-  <span class="caret"></span></button>
-  <ul class="dropdown-menu droptxt">
-    <li><a href="createadmin.php">Create Admin Account</a></li>
-    <li><a href="changepassword.php" >Reset Password</a></li>
-    <div class="dropdown-divider"></div>
-    <li><a href="logout.php" >Logout</a></li>
-  </div>
-  </ul>
-</div>
-</nav>
+<body>
 
-<div class="sidebar">
-            <br><br><br>
-            <a href="client.php ">Client</a>
-            <a href="artist.php">Artist</a>
-            <a href="booking.php">Booking</a>
-            <a href="payment.php">Payment</a>
-            <a href="service.php">Services</a>
-            <a href="report.php">Report</a>
-            <a href="Blog.php">Blog</a>
-        </div>
+<div class="main">
 
 
 
-<div class="container main">
-<br><br><br><br><br>
-<div class="form-group">
-<form action="createadmin.php" method="post">
+  <h2 class="dblabel">&nbsp Dashboard</h2>
+  <div class="container" style="text-align: center">
+
+  <form action="createadmin.php" method="post">
 
     
         <h1>Sign Up New Admin Account</h1>
@@ -247,23 +260,16 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
         
        
     </form>
-    </div> 
+
+ 
+
 
     
-  
-
-
+  </div>
 </div>
 
 
-            
-          
-    
-     
 
-
-     
-     
 </body>
 </html>
 

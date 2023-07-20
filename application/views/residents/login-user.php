@@ -37,8 +37,8 @@
  
   
 
-  <!-- Template Main CSS File -->
-  <link href="assets/css/style.css" rel="stylesheet">
+  <!-- Template Main CSS File 
+  <link href="assets/css/style.css" rel="stylesheet">-->
 
   <!-- =======================================================
   * Template Name: FlexStart - v1.9.0
@@ -60,7 +60,7 @@ body{
 
 .box-area{
     width: 1000px;
-    height: 70vh;
+    height: 90vh;
 }
 
 /*------------ Right box ------------*/
@@ -163,9 +163,9 @@ body{
                   <div class="form-group">
                   <input class="form-control button" type="submit" name="login" Style="background: #001D3D; border-color:#001D3D; color:white;" value="Login">
                   </div>
-                  <div class="input-group mb-3">
+                 <!-- <div class="input-group mb-3">
                     
-                  </div>
+                  </div> -->
                   <div class="row">
                       <small>Don't have account? <a href="<?php echo base_url('signup'); ?>" style="width: 17rem; font-weight: 600; color:black">Sign Up</a></small>
                   </div>

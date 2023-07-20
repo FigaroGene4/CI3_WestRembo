@@ -1,4 +1,5 @@
 <?php //include 'includes/header.php';?>
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
 
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@500&display=swap');
@@ -16,13 +17,27 @@ h1{
     font-style: normal;
     font-weight: 400;
 }
+
+@media (max-width: 3000px) {
+
+.paddingPC{
+  padding-left: 100px;
+}
+}
+
+@media (max-width: 500px) {
+
+.paddingPC{
+padding-left: 0px;
+}
+}
 /* Create two equal columns that sits next to each other */
 
 </style>
 <div class="container">
 <div class="row">
   <div class="col-sm-6 d-flex align-items-center">
-    <div class="card-transparent border-0" style="padding-left: 100px;">
+    <div class="card-transparent border-0 paddingPC" >
       <div class="card-body">
         <h1 class="card-title">About Barangay
             <span style="color: #FFC300;">West Rembo </span> </h1>
@@ -52,13 +67,13 @@ population of 29,826. Its population density is fifty-four persons per 1,000 squ
   <div class="col-sm-6 d-flex align-items-center">
     <div class="card-transparent border-0" >
       <div class="card-body">
-      <img class="card-img-top" src="wrp-assets/City buildings_Two Color.png" alt="" style="margin-left: 80px;">
+      <img class="card-img-top" src="wrp-assets/City buildings_Two Color.png" alt="" style="margin-left: 0px;">
       </div>
     </div>
   </div>
 
   <div class="col-sm d-flex align-items-center">
-    <div class="card-transparent border-0" style="padding-left: 100px;">
+  <div class="card-transparent border-0 paddingPC" >
       <div class="card-body">
    
       <h1 class="card-title">Our
@@ -80,7 +95,7 @@ a gender-responsive community.</p>
 <div class="container">
 <div class="row">
   <div class="col-sm-6 d-flex align-items-center">
-    <div class="card-transparent border-0" style="padding-left: 100px;">
+  <div class="card-transparent border-0 paddingPC" >
       <div class="card-body">
         <h1 class="card-title">Our
             <span style="color: #FFC300;">Vision</span> </h1>

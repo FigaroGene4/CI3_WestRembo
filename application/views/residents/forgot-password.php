@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title> Welcome to SPA2GO!</title>
+  <title> Brgy. West Rembo App</title>
   <meta content="" name="description">
 
   <meta content="" name="keywords">
@@ -41,7 +41,11 @@
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
 </head>
-
+<style>
+    .navbar-dark .navbar-nav .nav-link a .nav-link {
+  color: white;
+}
+</style>
 <body>
 
 <br><br><br><br><br>

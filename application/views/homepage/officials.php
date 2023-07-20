@@ -1,4 +1,7 @@
 <?php //include 'includes/header.php';?>
+
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+
 <style>
     @font-face{
     src: url(css/fonts/WorkSans-Regular.ttf);
@@ -23,6 +26,30 @@ h3{
 p{
     font-weight: 500;
 }
+
+
+@media (max-width: 3000px) {
+
+.paddingPC{
+  padding-left: 100px;
+  float:left;
+}
+}
+
+@media (max-width: 500px) {
+
+.paddingPC{
+
+width: 350px;
+padding-left:0px;
+
+}
+
+.pic{
+  padding-left: 5px;
+  width: 290px;
+}
+}
 </style>
 
 <!--<div class="container" style="background-image: url('wrp-assets/footer-bg.png');
@@ -33,14 +60,12 @@ p{
 <div class="container" style="
     background-size: cover;
     background-repeat: no-repeat;
-    background-position: center;
-    padding: 120px;"> 
-    
+    background-position: center;">
     <h1> Barangay West Rembo Officials</h1>
 <div class="row">
-  <div class="col-sm-6 d-flex align-items-center">
+  <div class="col-sm-6 d-flex align-items-center ">
     
-    <div class="card-transparent border-0" style="padding-left: 100px; float:left">
+    <div class="card-transparent border-0 paddingPC" >
       <div class="card-body">
   
       </div>
@@ -49,43 +74,33 @@ p{
 
   <section id="features" class="features">
 
-<div class="container" data-aos="fade-up">
 
-  <header class="section-header">
-   
-   
-  </header>
-
-
-</div>
 
 <div class="container">
 
 <div class="row">
 
-<div class="col-6">
-
-<img src="wrp-assets/brg-officials/kap.png">
+<div class="col">
+<div class="row">
+<img class="paddingPC" src="wrp-assets/brg-officials/kap.png" >
 <br><br>
-<h3 style="text-align: center;">MARILOU BANDEJAS-DILLA</h3>
+<h4 style="text-align: center;">MARILOU BANDEJAS-DILLA</h3>
 <h5 style="text-align: center;"> <i>Barangay Captain</i></h5>
 
-
+</div>
 </div>
 
 
-<div class="col-6">
+<div class="col-xl">
 
 <section id="team" class="team">
 
 <div class="container" data-aos="fade-up">
 
-<header class="section-header">
 
-</header>
 
-<div class="row ">
-<div class="col align-items-stretch" data-aos="fade-up" data-aos-delay="100">
+<div class="row pic ">
+<div class="col align-items-stretch " data-aos="fade-up" data-aos-delay="100">
 <div class="member">
   <div class="member-img">
   <img src="/brg-officials/3.png" class="img-fluid" alt="">
@@ -149,7 +164,7 @@ p{
 
 
 
-<div class="row ">
+<div class="row pic">
 
 
 <div class="col align-items-stretch" data-aos="fade-up" data-aos-delay="400">

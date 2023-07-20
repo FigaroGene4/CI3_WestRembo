@@ -13,8 +13,7 @@ session_start();
 
 
 
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
-
+  
   <!-- jQuery library -->
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
 
@@ -28,6 +27,7 @@ session_start();
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <style>
+
 
 .height10 {
       height: 10px;
@@ -154,7 +154,7 @@ session_start();
         </ul>
           <div class="row">
               
-                  <table id="myTable" class="table text-center table-bordered table-striped table-responsive">
+                  <table id="myTable" class="table text-center table-bordered table-striped ">
                     <thead>
 
 

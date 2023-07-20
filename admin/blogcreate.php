@@ -128,8 +128,8 @@ if (isset($_FILES['image'])){
     $new_img_name = $time . $img_name;
     move_uploaded_file($tmp_name, "../admin/blogimage/" . $new_img_name);
 
-    $sql = "INSERT INTO table_blog (title, date, content, img, category)
-    VALUES ('$title', '$date','$content', '{$new_img_name}', '$category')";
+    $sql = "INSERT INTO table_blog (title, date, content, img, category, status)
+    VALUES ('$title', '$date','$content', '{$new_img_name}', '$category', 'active')";
     $conn->query($sql);
 
    

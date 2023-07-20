@@ -12,7 +12,7 @@
             <div class="modal-body">
           
 			<h2 class="text-center"> <?php echo $row['firstName']?> </h2>	
-            <h3 class="text-center"> <?php echo 'Reference No.'. $row['referenceNumber']    ?> </h3>
+            <h3 class="text-center"> <?php echo 'Reference No.'. $row['transactionNumber']    ?> </h3>
             <h3 class="text-center"> <?php echo 'Amount: ₱'. $row['price'] ?> </h3>
 
             </div>

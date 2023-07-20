@@ -116,6 +116,8 @@ body{
            </div>
            <p class="text-dark fs-2" style="font-weight: 600;">Admin Login</p>
            <small class="text-dark text-wrap text-center" style="width: 17rem;">Sign in your account</small>
+<br><br>
+
        </div> 
     <!-------------------- ------ Right Box ---------------------------->
         
@@ -123,7 +125,8 @@ body{
           <div class="row align-items-center">
                 <div class="header-text mb-4">
                      <h2 style="font-weight: 600; color:black">Login</h2>
-                     <p>Sign in your account.</p>
+                     <p>Sign in your account.</p><br>
+                     
 
                 
                 </div>
@@ -142,12 +145,12 @@ body{
                             <input type="checkbox" class="form-check-input" id="formCheck">
                             <label for="formCheck" class="form-check-label text-secondary"><small>Remember Me</small></label>
                         </div>
-                        <div class="forgot">
-                            <small><a style="font-weight: 600; color:black" href="#">Forgot Password?</a></small>
-                        </div>
+                      <!--  <div class="forgot">
+                            <small><a style="font-weight: 600; color:black" href="forgot-password.php">Forgot Password?</a></small>
+                        </div> -->
                     </div>
                     <div class="form-group">
-                    <input class="btn btn-primary btn-block mt-3"  type="submit" Style="background: #001D3D; border-color:#001D3D; color:white;" value="Login">
+                    <input class="btn btn-primary btn-block mt-3" name="login"  type="submit" Style="background: #001D3D; border-color:#001D3D; color:white;" value="Login">
                     </div>
                     <div class="pass"><?php if (isset($_GET['error'])) { ?>
                     <p class="error" style="color:red;"><?php echo $_GET['error']; ?></p>

@@ -1,4 +1,6 @@
 <?php //include 'includes/header.php';?>
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+
 <style>
     @font-face{
     src: url(css/fonts/WorkSans-Regular.ttf);
@@ -23,6 +25,34 @@ h3{
 p{
     font-weight: 500;
 }
+
+
+@media (max-width: 3000px) {
+
+.paddingPC{
+  background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    padding: 120px;
+}
+.imgsz{
+  width: 600px;
+}
+}
+
+@media (max-width: 500px) {
+
+.paddingPC{
+padding-left: 10px;
+
+}
+
+
+
+.imgsz{
+  width: 320px;
+}
+}
 </style>
 
 <!--<div class="container" style="background-image: url('wrp-assets/footer-bg.png');
@@ -30,31 +60,20 @@ p{
     background-repeat: no-repeat;
     background-position: center;
     padding: 120px;">-->
-   <div class="container" style="
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    padding: 120px;">
+   <div class="container">
     
     
-<div class="row">
-  <div class="col-sm-6 d-flex align-items-center">
-  <h1> News & Announcements</h1>
-    <div class="card-transparent border-0" style="padding-left: 100px; float:left">
-      <div class="card-body">
-  
-      </div>
-    </div>
+<div class="container">
+ 
+  <h1> News & Announcements</h1> <br><br>
+   
   </div>
 
-  <section id="features" class="features">
+  
 
 <div class="container" data-aos="fade-up">
 
-  <header class="section-header">
-   
-   
-  </header>
+  
 
 
 </div>
@@ -62,7 +81,7 @@ p{
 <div class="container">
 
 
-<script type="text/javascript">
+<script type="text/javascript">/*
  function loadDoc() {
   
 
@@ -81,20 +100,20 @@ p{
  }
  loadDoc();
 </script>
-<br><br><br><br><br><br>
+
 
 <?php 
 include_once("db_conn.php");
-$sql = "SELECT * FROM table_blog ORDER BY id DESC";
+$sql = "SELECT * FROM table_blog WHERE status = 'active' ORDER BY id DESC";
 $resultset = mysqli_query($conn, $sql) or die("database error:". mysqli_error($conn));
 while ($rows = mysqli_fetch_assoc($resultset)) {
     echo "<div class='container'>";
     echo "<div class='row'>";
     
     // Display image in column 1
-    echo "<div class='col-md-6'>";
+    echo "<div class='col'>";
     echo "<div class='announcement-image'>";
-    echo "<a href='blogpost.php?id=".$rows['id']."'><img src='admin/blogimage/".$rows['img']."' alt='1.jpg' class='img-responsive' style='width: 600px; height: 400px; border-radius: 20px;'></a>";
+    echo "<img class='imgsz'src='admin/blogimage/".$rows['img']."' alt='1.jpg' class='img-responsive' style='  border-radius: 20px;'></a>";
     echo "</div>";
     echo "</div>";
     

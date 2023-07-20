@@ -381,6 +381,141 @@ if (isset($_POST['login-now'])) {
 // if resident submits a request 
 
 
+if(isset($_POST['requestOther'])){
+
+    $category = $_POST['type'];
+
+$_SESSION['category'] = $category;
+
+function getGUIDnoHash()
+    {
+      mt_srand((float)microtime() * 10000);
+      $charid = md5(uniqid(rand(), true));
+      $c = unpack("C*", $charid);
+      $c = implode("", $c);
+
+      return substr('DOC' . $c, 0, 11);
+    }
+
+
+
+    $transactionNumber = getGUIDnoHash();
+    $_SESSION['transactionNumber'] = $transactionNumber;
+
+    
+$reason = $_POST['reason'];
+$birthplace = $_POST['birthplace'];
+    $period = $_POST['period'];
+    $voter = $_POST['voter'];
+    $owner = $_POST['houseOwner'];
+    $relation = $_POST['relation'];
+
+
+
+$email = $_SESSION['email'];
+
+$sel = mysqli_query($con, "SELECT * FROM `table_documentrequest` WHERE email = '$email' AND  category = '$category'");
+
+
+
+include_once("db_conn.php");
+$sql = "SELECT * FROM table_residents WHERE email = '$email'";
+
+
+$resultset = mysqli_query($conn, $sql) or die("database error:". mysqli_error($conn));
+
+
+while( $rows = mysqli_fetch_assoc($resultset)){	
+
+    $category = $_SESSION['category'];
+
+    $transactionNumber = $_SESSION['transactionNumber'];
+
+    $firstName = $rows['firstName'];
+    $lastName = $rows['lastName'];
+    $price = '';
+    $dates = date("Y-m-d");
+    $email =$rows['email'];
+
+
+   
+
+    $reason = $_POST['reason'];
+    $status = "For Approval";
+
+}
+
+$sql3 = "SELECT * FROM `table_pricing` WHERE id = 1";
+$resultset3 = mysqli_query($conn, $sql3) or die("database error:". mysqli_error($conn));
+
+while( $rows = mysqli_fetch_assoc($resultset3)){	
+
+
+
+    if($category == 'Baranggay ID'){
+        $price = $rows['baranggayId'];
+    }
+    else if($category == 'Baranggay Clearance'){
+        $price = $rows['baranggayClearance'];
+    }
+    else if($category == 'Business Permit'){
+        $price = $rows['businessPermit'];
+    }
+    else if($category == 'Yellow Card and Philhealth Application'){
+        $price = $rows['yellow'];
+    }
+    else if($category == "Senior Citizen's Card (White, Blue, Yellow & Philhealth)"){
+        $price = $rows['senior'];
+    }
+    else if($category == "PWD's Benefit Cards (Philhealth, Yellow)"){
+        $price = $rows['pwd'];
+    }
+    else if($category == "PVAO Application"){
+        $price = $rows['pvao'];
+    }
+    else if($category == "Bonafide Residency"){
+        $price = $rows['bona'];
+    }
+    else if($category == "Good Moral Character"){
+        $price = $rows['goodmoral'];
+    }
+    else if($category == "Marriage License"){
+        $price = $rows['marriage'];
+    }
+    else if($category == "No Derogatory Record"){
+        $price = $rows['nodero'];
+    }
+    else if($category == "Scholarship/ UMAK Consortia"){
+        $price = $rows['scholarship'];
+    }
+    else if($category == "Green Card"){
+        $price = $rows['greencard'];
+    }
+
+    
+
+
+    $_SESSION['price'] = $price;
+
+   
+
+
+}
+
+$sql = "INSERT INTO table_documentrequest(transactionNumber, firstName, lastName,
+email, date, time, reason, price, category, status, birthplace,period,voter,owner,relation)
+    VALUES ('$transactionNumber', '$firstName', '$lastName', '$email', '$dates', '$time', '$reason', '$price', '$category', '$status','$birthplace','$period','$voter','$owner','$relation')";
+
+
+    $conn->query($sql);
+    redirect(base_url('requestSent'));
+    
+
+
+
+
+}
+
 if(isset($_POST['request'])){
 
     $category = $_SESSION['categ'];

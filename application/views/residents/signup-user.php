@@ -72,10 +72,23 @@
     height: auto;
   }
 
-  .padding{
+  
+
+  @media (max-width: 3000px) {
+
+    .padding{
     padding-left: 200px;
     padding-right: 200px;
   }
+}
+
+@media (max-width: 500px) {
+
+  .padding{
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
 
   
 </style>
@@ -202,7 +215,7 @@
           <div class="col-md-6">
             <div class="tacbox">
             <input id="checkbox" type="checkbox" required />
-            <label for="checkbox"> I agree to these <a href="#" data-toggle="modal" data-target="#exampleModalLong" style="color: #FFC300; font-weight: bolder;">Terms and Conditions</a>.</label>
+            <label for="checkbox"> I agree to these <a href="#" data-toggle="modal" data-target="#exampleModalLong" style="color: #FFC300; font-weight: bolder;"  data-toggle="modal" data-target="#exampleModalLong">Terms and Conditions</a></label>
           </div>
           </div>
         </div>
@@ -215,14 +228,85 @@
         <div class="form-group d-flex justify-content-center">
           <input class="form-control button" type="submit" name="signup" value="Signup" style="width: 250px; background-color: #001D3D; font-weight: bolder;">
         </div>
-        <div class="link login-link text-center">Already a member? <a style="color: #FFC300;" href="login-user.php">Login here</a></div>
+        <div class="link login-link text-center">Already a member? <a style="color: #FFC300;" href="<?php echo base_url('login'); ?>">Login here</a></div>
 
       </form>
     </div>
   </div>
 </div>
 
+<!-- Modal -->
+<div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Terms and Conditions</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      <div class="container">
+    <h1 class="mt-4">Terms and Conditions for Barangay System with Data Privacy Act (Republic Act No. 10173)</h1>
+    <p>Please read these Terms and Conditions ("Terms") carefully before accessing or using the Barangay System. These Terms apply to all users and visitors of the system. By accessing or using the system, you agree to be bound by these Terms. If you do not agree with any part of these Terms, please do not use the system.</p>
 
+    <h2 class="mt-4">1. Definitions</h2>
+    <ul>
+      <li><strong>"Barangay System"</strong> refers to the online platform or software developed and operated by the barangay, facilitating various services and activities related to the barangay administration, community engagement, and public services.</li>
+      <li><strong>"User"</strong> refers to any individual or entity accessing or using the Barangay System.</li>
+    </ul>
+
+    <h2 class="mt-4">2. Privacy and Data Protection</h2>
+    <ul>
+      <li>The Barangay System complies with the provisions of the Data Privacy Act of 2012 (Republic Act No. 10173) and other relevant laws and regulations pertaining to data privacy and protection.</li>
+      <li>The barangay is committed to safeguarding the privacy and security of user data collected through the Barangay System.</li>
+      <li>Users' personal information collected by the Barangay System shall be handled in accordance with the Privacy Policy, which is incorporated into these Terms by reference.</li>
+    </ul>
+
+    <h2 class="mt-4">3. User Responsibilities</h2>
+    <ul>
+      <li>Users must provide accurate, complete, and up-to-date information when using the Barangay System.</li>
+      <li>Users are responsible for maintaining the confidentiality of their account credentials and ensuring their accounts are not used by unauthorized individuals.</li>
+      <li>Users shall not engage in any unlawful, abusive, or unauthorized activities when using the Barangay System.</li>
+      <li>Users shall not attempt to gain unauthorized access to any part of the Barangay System or interfere with its functioning.</li>
+      <li>Users shall not use the Barangay System to distribute or transmit any harmful or malicious content, including but not limited to viruses, malware, or any form of unsolicited or unauthorized advertising.</li>
+    </ul>
+
+    <h2 class="mt-4">4. Intellectual Property</h2>
+    <ul>
+      <li>The Barangay System and its associated content, including but not limited to text, graphics, images, logos, and software, are protected by intellectual property laws and are the property of the barangay or its licensors.</li>
+      <li>Users may not reproduce, modify, distribute, or create derivative works of the Barangay System or its content without explicit written permission from the barangay.</li>
+    </ul>
+
+    <h2 class="mt-4">5. Limitation of Liability</h2>
+    <ul>
+      <li>The Barangay System is provided on an "as is" basis, and the barangay makes no warranties or representations regarding its availability, accuracy, completeness, or reliability.</li>
+      <li>The barangay shall not be liable for any direct, indirect, incidental, consequential, or exemplary damages arising from the use or inability to use the Barangay System.</li>
+      <li>The barangay shall not be responsible for any losses, damages, or liabilities resulting from unauthorized access or use of user data.</li>
+    </ul>
+
+    <h2 class="mt-4">6. Modification and Termination</h2>
+    <ul>
+      <li>The barangay reserves the right to modify or terminate the Barangay System or these Terms at any time, without prior notice.</li>
+      <li>The barangay may suspend or terminate user access to the Barangay System for any reason, including but not limited to violation of these Terms.</li>
+    </ul>
+
+    <h2 class="mt-4">7. Governing Law and Jurisdiction</h2>
+    <ul>
+      <li>These Terms shall be governed by and construed in accordance with the laws of the Philippines.</li>
+      <li>Any disputes arising out of or in connection with these Terms shall be subject to the exclusive jurisdiction of the courts located in the barangay's locality.</li>
+    </ul>
+
+    <p>By accessing or using the Barangay System, you acknowledge that you have read, understood, and agreed to these Terms and Conditions.</p>
+  </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+       
+      </div>
+    </div>
+  </div>
+</div>
 
 
 

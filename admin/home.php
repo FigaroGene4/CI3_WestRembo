@@ -138,7 +138,8 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
         <img src="../wrp-assets/wallet.png" style="position: absolute; top: 10px; left: 10px; margin-right: 10px; margin-bottom: 10px; width: 95px; height: 95px;">
         <h2>
           <?php
-          $sql = "SELECT sum(price) as amount FROM table_documentrequest WHERE status ='Payment Approved' OR status ='Printed'";
+          $date = date("Y-m-d");
+          $sql = "SELECT sum(price) as amount FROM table_documentrequest WHERE status ='Payment Approved' OR status ='Printed' AND datePaymentAccepted ='$date'";
           $result = $conn->query($sql);
           while ($row = mysqli_fetch_assoc($result)) {
             echo '₱' . $row['amount'];
@@ -187,7 +188,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
           </div>
           <br><br><br>
           <?php
-          $sql = "SELECT AVG(rate) as rate FROM table_documentrequest WHERE status = 'Payment Approved'  OR status ='Printed'";
+          $sql = "SELECT AVG(rate) as rate FROM table_documentrequest WHERE status ='Printed' AND rate != ''";
           $result = $conn->query($sql);
           while ($row = mysqli_fetch_assoc($result)) {
             echo "Rating:"."<h3>".$row['rate']."</h3>";
@@ -225,7 +226,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
     
     
 
-    <div class="col-lg-12">
+    <div class="col">
       <h2></h2>
       <h2 class="stlabel" style="text-align: left;">Service Tendered Percentage</h2>
       <div id="piechart" style="width: 100%; height: 400px;"></div>

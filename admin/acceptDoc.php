@@ -1,21 +1,38 @@
 <?php
 
-
 	session_start();
 	include_once('connection.php');
-
-	if(isset($_GET['id'])){
-
-
-		$date = date("Y-m-d");
+	
+	if(isset($_POST['approvedoc'])){
+		$datepick = $_POST['datepick'];
+		$newDate = date('Y-m-d', strtotime($datepick));
+		
         
         $valid = 'verified';
-        $sql = "UPDATE table_documentrequest SET status = 'For Payment', dateOfSched = '$date'  WHERE id = '".$_GET["id"]."'";
+		
+        $sql = "UPDATE table_documentrequest SET status = 'For Payment', dateOfSched = '$newDate'  WHERE id = '".$_GET["id"]."'";
 		
 
 		//use for MySQLi OOP
 		if($conn->query($sql)){
-			$_SESSION['success'] = 'Resident Accepted successfully';
+			$_SESSION['success'] = 'Document Accepted successfully';
+
+			$sql = "SELECT * FROM table_documentrequest WHERE id = '".$_GET["id"]."'";
+
+
+                      //use for MySQLi-OOP
+                      $query = $conn->query($sql);
+                      while ($row = $query->fetch_assoc()) {
+
+						$name = $row['firstName'] . ' '.  $row['lastName'];
+					$email = $row['email'];
+					$subject = "Document Request Accepted";
+                    $message = "Hello, " .$name .". Your request of ".$row['category']. "has been accepted. Please proceed with the steps on the app.";
+                    $sender = "From: westrembo.ph@gmail.com";
+                    
+					mail($email, $subject, $message, $sender); 
+
+					  }
 	}
 		////////////////
 

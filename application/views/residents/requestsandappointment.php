@@ -55,7 +55,7 @@ if ($email != false && $password != false) {
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title> Welcome to SPA2GO!</title>
+  <title> Brgy. West Rembo App</title>
   <meta content="" name="description">
 
   <meta content="" name="keywords">
@@ -302,32 +302,9 @@ if ($email != false && $password != false) {
               $query = $conn->query($sql);
               while ($row = $query->fetch_assoc()) {
                 $sentiment = $row['sentiment'];
-                
-              $_POST['startdate'] = $row['dateOfSched'];
-              $_POST['numberofdays'] = 2;
-          
-              $d = new DateTime( $_POST['startdate'] );
-              $t = $d->getTimestamp();
-          
-              // loop for X days
-              for($i=0; $i<$_POST['numberofdays']; $i++){
-          
-                  // add 1 day to timestamp
-                  $addDay = 86400;
-          
-                  // get what day it is next day
-                  $nextDay = date('w', ($t+$addDay));
-          
-                  // if it's Saturday or Sunday get $i-1
-                  if($nextDay == 0 || $nextDay == 6) {
-                      $i--;
-                  }
-          
-                  // modify timestamp, add 1 day
-                  $t = $t+$addDay;
-              }
-          
-              $d->setTimestamp($t);
+                $dateSched = $row['dateOfSched'];
+                $Fdate = date('F d, Y', strtotime($dateSched));
+             
                 $id = $row['id'];
                 echo
                 " <tr><td>" . $row['transactionNumber'] . "</td>
@@ -337,14 +314,15 @@ if ($email != false && $password != false) {
 
                 if ($row['status'] == "For Payment") {
                  // $dateTom = date('F d, Y', strtotime($row['dateOfSched']));
-                  echo "<td>" . $row['status']. " Please proceed to the baranggay hall at  ". $d->format( 'F d, Y' )
-                  ."</td></tr>";
+                  echo "<td>" . $row['status']. ". Please proceed to the baranggay hall at  ". $Fdate
+                  . " from 8am to 5pm </td></tr>";
                 }
                 else  if ($sentiment == "positive" || $sentiment == "negative") {
                   
-                  echo "<td> Document has been printed.  <a href='admin/printdocument.php?transactionNumber=" . $row['transactionNumber'] . "&category=".$row['category']."' class='btn btn-primary'>Print softcopy</a>
+                  echo "<td> Document has been printed.  
                   ";
 
+                  //<a href='admin/printdocument.php?transactionNumber=" . $row['transactionNumber'] . "&category=".$row['category']."' class='btn btn-primary'>Print softcopy</a>
 
                   echo "&nbsp<a href=". base_url('rate') . "?transactionNumber=" . $row['transactionNumber'] . "&category=".$row['category']."' class='btn btn-warning disabled'  >Rate and Comment";
                   
@@ -367,8 +345,7 @@ if ($email != false && $password != false) {
                 }
                 else  if ($row['status'] == "Printed") {
                   
-                  echo "<td> Document has been printed.  <a href='admin/printdocument.php?transactionNumber=" . $row['transactionNumber'] . "&category=".$row['category']."' class='btn btn-primary'>Print softcopy</a>
-                  ";
+                  echo "<td> Document has been printed.";
 
 
                   echo "&nbsp<a href=". base_url('rate') . "?transactionNumber=" . $row['transactionNumber'] . "&category=".$row['category']."' class='btn btn-warning'>Rate and Comment";
@@ -462,43 +439,16 @@ if ($email != false && $password != false) {
 
 
 
+\<!-- Vendor CSS Files -->
+<link href="assets/vendor/aos/aos.css" rel="stylesheet">
+<link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+<link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+<link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+<link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
-  <!-- Vendor JS Files -->
-  <script src="assets/vendor/purecounter/purecounter.js"></script>
-  <script src="assets/vendor/aos/aos.js"></script>
-  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
-  <script src="assets/vendor/php-email-form/validate.js"></script>
-
-  <script>
-    var links = document.getElementsByClassName('link')
-    for (var i = 0; i <= links.length; i++)
-      addClass(i)
-
-
-    function addClass(id) {
-      setTimeout(function() {
-        if (id > 0) links[id - 1].classList.remove('hover')
-        links[id].classList.add('hover')
-      }, id * 750)
-    }
-  </script>
-  <!-- Template Main JS File -->
-  <script src="assets1/js/main.js"></script>
-
-  <!-- Vendor JS Files -->
-  <script src="assets/vendor/purecounter/purecounter.js"></script>
-  <script src="assets/vendor/aos/aos.js"></script>
-  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
-  <script src="assets/vendor/php-email-form/validate.js"></script>
-
-  <!-- Template Main JS File -->
-  <script src="assets/js/main.js"></script>
+<!-- Template Main CSS File -->
+<link href="assets/css/style.css" rel="stylesheet">
 </body>
 
 </html>
